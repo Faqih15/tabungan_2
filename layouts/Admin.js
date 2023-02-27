@@ -10,7 +10,7 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 export default function Admin({ children }) {
   return (
     <>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className="relative md:ml-64 bg-blueGray-100">
         {/* <AdminNavbar /> */}
         {/* Header */}

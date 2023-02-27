@@ -91,7 +91,7 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   //   href="/"
-                  href="#pablo"
+                  href="/admin/dashboard"
                   className={
                     "text-xs uppercase py-3 font-bold block "
                     //   +
@@ -109,7 +109,7 @@ export default function Sidebar() {
                       //   : "text-blueGray-300")
                     }
                   ></i>{" "}
-                  Dashboard
+                  HOME
                 </Link>
               </li>
 
