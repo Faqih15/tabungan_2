@@ -6,56 +6,47 @@ import Select from "react-select";
 const status = [
   {
     value: "Aliyah 1",
-    kelas: "Aliyah 1",
-    label: "",
+    label: "Aliyah 1",
     kode: "",
   },
   {
     value: "Aliyah 2",
-    kelas: "Aliyah 2",
-    label: "",
+    label: "Aliyah 2",
     kode: "",
   },
   {
     value: "Aliyah 3",
-    kelas: "Aliyah 3",
-    label: "",
+    label: "Aliyah 3",
     kode: "",
   },
   {
     value: "Mu'allimin 1",
-    kelas: "Mu'allimin 1",
-    label: "",
+    label: "Mu'allimin 1",
     kode: "",
   },
   {
     value: "Mu'allimin 2",
-    kelas: "Mu'allimin 2",
-    label: "",
+    label: "Mu'allimin 2",
     kode: "",
   },
   {
     value: "Mu'allimin 3",
-    kelas: "Mu'allimin 3",
-    label: "",
+    label: "Mu'allimin 3",
     kode: "",
   },
   {
     value: "Ahlu Kitabah",
-    kelas: "Ahlu Kitabah",
-    label: "",
+    label: "Ahlu Kitabah",
     kode: "",
   },
   {
     value: "Munaqasyah",
-    kelas: "Munaqasyah",
-    label: "",
+    label: "Munaqasyah",
     kode: "",
   },
   {
     value: "Selesai Munaq",
-    kelas: "Selesai Munaq",
-    label: "",
+    label: "Selesai Munaq",
     kode: "",
   },
 ];
@@ -182,7 +173,7 @@ export default function CardSettings() {
                     options={status}
                     type="text"
                     styles={menuStyle}
-                    className=" text-slate-900 border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm 
+                    className=" text-slate-900 border-0 px-1 py-1 placeholder-blueGray-300 bg-white rounded text-sm 
                     shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Pilih Kelas Anda"
                   />
