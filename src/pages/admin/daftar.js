@@ -8,35 +8,23 @@ import CardProfile from "components/Cards/CardProfile.js";
 
 // layout for page
 
-// import Admin from "layouts/Admin.js";
-import AdminNavbar from "components/Navbars/AdminNavbar.js";
-import HeaderStats from "components/Headers/HeaderStats.js";
-
-import Sidebar from "components/Sidebar/Sidebar";
+import Admin from "layouts/Admin.js";
 
 function Settings() {
   return (
     <>
-      <Sidebar />
-      <div className="relative md:ml-64 bg-blueGray-100">
-        <AdminNavbar />
-      </div>
-      <div className="relative md:ml-64">
-        <HeaderStats />
-      </div>
-      <div className="flex flex-wrap pl-60">
-        <div className="w-full lg:w-8/12 px-4">
+      <Admin />
+      <div className="flex flex-wrap mt-4 relative md:ml-64 px-8">
+        <div className="w-full lg:w-8/12">
           <CardSettings />
           {/* bg-orange-400 */}
         </div>
-
-        
       </div>
     </>
   );
 }
 export default Settings;
-// Settings.layout = Admin;
+Settings.layout = Admin;
 
 // const router = useRouter();
 
@@ -50,3 +38,14 @@ export default Settings;
 // }, [router.query.counter]);
 //
 // jurus terakhir kalo pindah page masih render
+
+//TEMPLATE RELATIVE ABSOLUTE
+{
+  /* <div className="relative">
+  <div className="absolute">
+    <slot /> nuxt 3
+    <nuxt /> nuxt 2
+  </div>
+</div>; */
+}
+// UNTUK LAYOUT BISA DIJELASKAN DI NEXT LAYOUT

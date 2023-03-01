@@ -1,13 +1,12 @@
-import React from 'react'
-
-import Dashboard from './dashboard'
+import React from "react";
+import Home from "./home";
 
 function index() {
   return (
     <div>
-      <Dashboard />
+      <Home />
     </div>
-  )
+  );
 }
 
-export default index
+export default index;
