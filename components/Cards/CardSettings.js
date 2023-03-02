@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import excuteQuery from "../../db";
 import Link from "next/link";
 
 // components
@@ -84,6 +85,7 @@ const menuStyle = {
 };
 
 export default function CardSettings() {
+  // console.log(excuteQuery, "excuteQuery");
   const [data, setdata] = useState([]);
 
   const [datapertama, setdatapertama] = useState({
@@ -92,7 +94,7 @@ export default function CardSettings() {
     alamat: "",
     orangtua: "",
     kelas: "",
-    duit: "",
+    saldo: "",
   });
 
   const mendaftar = (e) => {
@@ -107,22 +109,14 @@ export default function CardSettings() {
     setdata(newdata);
     e.target.reset();
   };
-  // console.log(data, "data baris 107");
+  console.log(data, "data baris 112");
   // console.log(datapertama, "DATA PERTAMA 108");
 
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
         <section className="rounded-t mb-0 px-6 py-6">
-          <div className="text-center flex justify-between">
-            <h6 className="text-blueGray-700 text-xl font-bold">My account</h6>
-            <button
-              className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-              type="button"
-            >
-              Settings
-            </button>
-          </div>
+          
         </section>
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
           <form onSubmit={onSubmit}>
@@ -224,6 +218,7 @@ export default function CardSettings() {
                         target: { value: e.value, name: "kelas" },
                       })
                     }
+                    blurInputOnSelect={false} //set by default, but to be sure
                     options={status}
                     type="text"
                     id="kelas"
@@ -238,12 +233,12 @@ export default function CardSettings() {
             </div>
             <button
               type="submit"
-              className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed"
+              className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75 cursor-not-allowed"
             >
               SUBMIT FORM
             </button>
 
-            <hr className="mt-6 border-b-1 border-blueGray-300" />
+            <hr className="mt-6 border-b-1 border-blueGray-300 pb-2" />
             {/* 
             <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
               Contact Information
@@ -341,3 +336,4 @@ export default function CardSettings() {
     </>
   );
 }
+
