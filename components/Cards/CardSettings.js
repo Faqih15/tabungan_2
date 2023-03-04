@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Select from "react-select";
 import excuteQuery from "../../db";
 import Link from "next/link";
+import { url } from "components/Links/Links";
+import axios from "axios";
 
 // components
 
@@ -94,30 +96,36 @@ export default function CardSettings() {
     alamat: "",
     orangtua: "",
     kelas: "",
-    saldo: "",
+    duit: "",
   });
 
   const mendaftar = (e) => {
     setdatapertama({ ...datapertama, [e.target.name]: e.target.value });
-    console.log(e.target.value, "e.target.value");
+    // console.log(e.target.value, "e.target.value");
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const newdata = [...data];
-    newdata.push(datapertama);
-    setdata(newdata);
-    e.target.reset();
+    axios
+      .post(`${url}/posts`, datapertama)
+      .then((respon) => {
+        // alert("berhasil post data pakai axios");
+        console.log(respon, "berhasil");
+      })
+      .catch((x) => {
+        // alert("GAGAL CUY");
+        console.log(x, "gagal");
+      });
+    // e.target.reset();
   };
-  console.log(data, "data baris 112");
+  console.log(datapertama, "data baris 133");
+  console.log(`${url}/posts`, "url/posts");
   // console.log(datapertama, "DATA PERTAMA 108");
 
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
-        <section className="rounded-t mb-0 px-6 py-6">
-          
-        </section>
+        <section className="rounded-t mb-0 px-6 py-6"></section>
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
           <form onSubmit={onSubmit}>
             <h6 className="text-black text-sm mt-3 mb-6 font-bold uppercase">
@@ -133,11 +141,11 @@ export default function CardSettings() {
                     Nama Santri
                   </label>
                   <input
+                    className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     onChange={mendaftar}
                     type="text"
                     id="nama"
-                    name="nama"
-                    className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    name="surname"
                     placeholder="Masukkan Nama Santri"
                     autoComplete="off"
                     required
@@ -157,6 +165,8 @@ export default function CardSettings() {
                     type="number"
                     id="nim"
                     name="nim"
+                    min="30001"
+                    max="35999"
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Masukkan NIM Santri"
                     autoComplete="off"
@@ -336,4 +346,3 @@ export default function CardSettings() {
     </>
   );
 }
-

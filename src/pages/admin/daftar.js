@@ -24,7 +24,7 @@ function Settings() {
   );
 }
 export default Settings;
-Settings.layout = Admin;
+// Settings.layout = Admin;
 
 // const router = useRouter();
 

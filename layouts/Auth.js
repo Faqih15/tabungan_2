@@ -6,7 +6,7 @@ import Navbar from "components/Navbars/AuthNavbar.js";
 import FooterSmall from "components/Footers/FooterSmall.js";
 import SantriBuy from "components/Transaction/SantriBuy";
 
-export default function Auth() {
+export default function Auth({ children }) {
   return (
     <>
       <Navbar transparent />
@@ -18,7 +18,8 @@ export default function Auth() {
               backgroundImage: "url('/img/register_bg_2.png')",
             }}
           ></div>
-          <SantriBuy />
+          {children}
+          {/* <SantriBuy /> */}
           <FooterSmall absolute />
         </section>
       </main>

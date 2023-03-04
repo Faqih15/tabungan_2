@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontSize: {
+      xxsm: "0.6rem",
+    },
   },
   plugins: [],
 };
