@@ -7,7 +7,10 @@
       "postId": 1
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "admins": [
+    { "name": "rofa", "id": 33088 },
+    { "name": "fitri", "id": 32060 },
+    { "name": "fatiya", "id": 33076 },
+    { "name": "ida", "id": 33066 }
+  ]
 }
