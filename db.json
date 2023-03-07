@@ -8,9 +8,9 @@
     }
   ],
   "admins": [
-    { "name": "rofa", "id": 33088 },
-    { "name": "fitri", "id": 32060 },
-    { "name": "fatiya", "id": 33076 },
-    { "name": "ida", "id": 33066 }
+    { "name": "rofa", "password": 33088 },
+    { "name": "fitri", "password": 32060 },
+    { "name": "fatiya", "password": 33076 },
+    { "name": "nong", "password": 33066 }
   ]
 }

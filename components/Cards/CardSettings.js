@@ -118,7 +118,7 @@ export default function CardSettings() {
       });
     // e.target.reset();
   };
-  console.log(datapertama, "data baris 133");
+  // console.log(datapertama, "data baris 133");
   console.log(`${url}/posts`, "url/posts");
   // console.log(datapertama, "DATA PERTAMA 108");
 

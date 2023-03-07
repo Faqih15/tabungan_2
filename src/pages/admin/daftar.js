@@ -8,18 +8,19 @@ import CardProfile from "components/Cards/CardProfile.js";
 
 // layout for page
 
-import Admin from "layouts/Admin.js";
+import Admin from "layouts/layoutAdmin.js";
 
 function Settings() {
   return (
     <>
-      <Admin />
-      <div className="flex flex-wrap mt-4 relative md:ml-64 px-8">
-        <div className="w-full lg:w-8/12">
-          <CardSettings />
-          {/* bg-orange-400 */}
+      <Admin>
+        <div className="flex flex-wrap mt-4 relative md:ml-64 px-8">
+          <div className="w-full lg:w-8/12">
+            <CardSettings />
+            {/* bg-orange-400 */}
+          </div>
         </div>
-      </div>
+      </Admin>
     </>
   );
 }
