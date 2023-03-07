@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import excuteQuery from "../../db";
+import excuteQuery from "../../lib/db";
 import Link from "next/link";
 import { url } from "components/Links/Links";
 import axios from "axios";
@@ -110,6 +110,7 @@ export default function CardSettings() {
       .post(`${url}/posts`, datapertama)
       .then((respon) => {
         // alert("berhasil post data pakai axios");
+        // pindah halaman-kosongkan input
         console.log(respon, "berhasil");
       })
       .catch((x) => {

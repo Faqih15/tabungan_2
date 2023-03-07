@@ -11,11 +11,12 @@ import Login from "./auth/transaction";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  console.log("indexjs pages 3000");
   return (
     <>
       <Head>
         {/* <Dashboard /> */}
-        <Login />
+        <Login ayam={"ayam index.js"} />
         {/* <div>ayam</div> */}
       </Head>
       <main></main>

@@ -6,27 +6,28 @@ import axios from "axios";
 import Auth from "layouts/layoutAuth.js";
 import { url } from "components/Links/Links";
 
-export default function Login() {
-  const [statusLogin, setstatusLogin] = useState([]);
-  const inputRef = useRef();
+export default function Login(props) {
+  const setlogin = props.setlogin;
+  const [statusLogin, setstatusLogin] = useState({
+    isLogin: true,
+  });
+
   const cekLogin = (e) => {
     e.preventDefault();
+    // console.log(e.target);
 
-    axios
-      .get(`${url}/admins`)
-      .then(function (response) {
-        // handle success
-        console.log(response.data, "axios response");
-        setstatusLogin(inputRef.current.value);
-        console.log(statusLogin, "statuslogin");
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error, "axios error");
-      })
-      .finally(function () {
-        // always executed
-      });
+    // mujahidfaqihuddin@gmail.com
+    const emailuser = e.target.emailoruser.value;
+    const password = e.target.password.value;
+    // setstatusLogin({ isLogin: true });
+    if (
+      emailuser === "mujahidfaqihuddin@gmail.com" &&
+      password === "gaskencoy"
+    ) {
+      setlogin(true);
+    } else {
+      console.log("user/pass salah");
+    }
   };
 
   return (
@@ -44,7 +45,7 @@ export default function Login() {
                     <div className="text-blueGray-400 text-center mb-3 font-bold">
                       <small>Sign in with credentials</small>
                     </div>
-                    <form>
+                    <form onSubmit={cekLogin}>
                       <div className="relative w-full mb-3">
                         <label
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -53,10 +54,10 @@ export default function Login() {
                           Email / Username
                         </label>
                         <input
+                          autoComplete="off"
                           type="text"
-                          id="emailuser"
-                          name="emailuser"
-                          ref={inputRef}
+                          id="emailoruser"
+                          name="emailoruser"
                           className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           placeholder="Email / Username"
                         />
@@ -70,6 +71,7 @@ export default function Login() {
                           Password
                         </label>
                         <input
+                          autoComplete="off"
                           type="password"
                           id="password"
                           name="password"
@@ -83,6 +85,7 @@ export default function Login() {
                           <input
                             id="customCheckLogin"
                             type="checkbox"
+                            autoComplete="off"
                             className="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
                           />
                           <span className="ml-2 text-sm font-semibold text-blueGray-600">
@@ -94,8 +97,8 @@ export default function Login() {
                       <div className="text-center mt-6">
                         <button
                           className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                          type="button"
-                          onClick={cekLogin}
+                          type="submit"
+                          // onClick={cekLogin}
                         >
                           Sign In
                         </button>
@@ -131,3 +134,35 @@ export default function Login() {
 }
 
 // Login.layout = Auth;
+
+// const [inputLogin, setinputLogin] = useState({
+//   emailoruser: "",
+//   password: "",
+// });
+
+// const inputed = (e) => {
+//   setinputLogin({
+//     [e.target.name]: e.target.value,
+//     [e.target.password]: e.target.value,
+//   });
+//   // console.log(e.target.value, "e.target.value");
+// };
+
+// axios
+//   .get(`${url}/admins`)
+//   .then(function (response) {
+//     // handle success
+//     // setstatusLogin(inputRef.current.value);
+//     // console.log("axios get berhasil");
+//     // console.log(inputLogin, "inputLogin");
+//     if(`${url}/admins`){
+//       console.log(`${url}/admins`);
+//     }
+//   })
+//   .catch(function (error) {
+//     // handle error
+//     console.log(error, "axios error");
+//   })
+//   .finally(function () {
+//     // always executed
+//   });

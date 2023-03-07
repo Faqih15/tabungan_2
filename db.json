@@ -8,9 +8,9 @@
     }
   ],
   "admins": [
-    { "name": "rofa", "password": 33088 },
-    { "name": "fitri", "password": 32060 },
-    { "name": "fatiya", "password": 33076 },
-    { "name": "nong", "password": 33066 }
+    { "name": "rofa", "email": "saropul88@gmail.com", "password": 33088 },
+    { "name": "fitri", "email": "twin60@gmail.com", "password": 32060 },
+    { "name": "fatiya", "email": "", "password": 33076 },
+    { "name": "nong", "email": "", "password": 33066 }
   ]
 }

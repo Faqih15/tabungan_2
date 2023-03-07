@@ -1,7 +1,8 @@
 import Link from "next/link";
 import React from "react";
 
-function SantriBuy() {
+function SantriBuy({ data }) {
+  console.log("props data dari transaction.js ke santribuy");
   return (
     <div className="container mx-auto px-4 h-full">
       <div className="flex content-center items-center justify-center h-full">
@@ -29,6 +30,7 @@ function SantriBuy() {
                   </label>
                   <input
                     type="text"
+                    autoComplete="off"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Email"
                   />
@@ -45,6 +47,7 @@ function SantriBuy() {
                     type="number"
                     min="30001"
                     max="35999"
+                    autoComplete="off"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="NIM"
                   />
@@ -60,6 +63,7 @@ function SantriBuy() {
                     type="number"
                     min="100"
                     max="30000"
+                    autoComplete="off"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Uang"
                   />
@@ -73,6 +77,7 @@ function SantriBuy() {
                   </label>
                   <input
                     type="password"
+                    autoComplete="off"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Password"
                   />
@@ -83,6 +88,7 @@ function SantriBuy() {
                     <input
                       id="customCheckLogin"
                       type="checkbox"
+                      autoComplete="off"
                       className="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
                     />
                     <span className="ml-2 text-xxsm font-semibold text-blueGray-600 hover:text-red-600">

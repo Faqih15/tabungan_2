@@ -24,6 +24,7 @@ export default function Navbar() {
               <input
                 type="text"
                 placeholder="Search here..."
+                autoComplete="off"
                 className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
               />
             </div>

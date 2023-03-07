@@ -6,6 +6,9 @@ import Login from "./loginAdm";
 export default function index({ children }) {
   // const router = useRouter();
   const [datalogin, setdatalogin] = useState(false);
+  const setlogin = (arg) => {
+    setdatalogin(arg);
+  };
 
   // const firstdata = useMemo
   // useMemo(() => first, [second])
@@ -14,18 +17,18 @@ export default function index({ children }) {
   if (datalogin === false) {
     return (
       <>
-        <Login />
+        <Login setlogin={setlogin} />
         {/* <Home /> */}
       </>
     );
     console.log("if");
   } else if (datalogin === true) {
-    <>
-      <Home />
-    </>;
-    console.log("else if");
+    return (
+      <>
+        <Home />
+      </>
+    );
   } else {
-    console.log("else");
   }
 }
 

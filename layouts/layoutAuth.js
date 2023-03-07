@@ -6,7 +6,8 @@ import Navbar from "components/Navbars/AuthNavbar.js";
 import FooterSmall from "components/Footers/FooterSmall.js";
 import SantriBuy from "components/Transaction/SantriBuy";
 
-export default function Auth({ children }) {
+export default function Auth({ children, data }) {
+  // console.log(data, "data props dari transaction.js");
   return (
     <>
       <Navbar transparent />
