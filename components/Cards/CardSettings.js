@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import excuteQuery from "../../lib/db";
+// import excuteQuery from "../../lib/db";
 import Link from "next/link";
 import { url } from "components/Links/Links";
 import axios from "axios";
+// import { createSantriProfile } from "lib/daftsantri";
 
 // components
 
@@ -86,7 +87,7 @@ const menuStyle = {
   }),
 };
 
-export default function CardSettings() {
+export default function CardSettings({ props }) {
   // console.log(excuteQuery, "excuteQuery");
   const [data, setdata] = useState([]);
 
@@ -241,6 +242,26 @@ export default function CardSettings() {
                   />
                 </div>
               </div>
+              <div className="w-full lg:w-6/12 px-4">
+                <div className="relative w-full mb-3">
+                  <label
+                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    htmlFor="grid-password"
+                  >
+                    Password
+                  </label>
+                  <input
+                    onChange={mendaftar}
+                    type="text"
+                    id="password"
+                    name="password"
+                    className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Masukkan Password Anda"
+                    autoComplete="off"
+                    required
+                  />
+                </div>
+              </div>
             </div>
             <button
               type="submit"
@@ -346,4 +367,12 @@ export default function CardSettings() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const data = await props.csp();
+  console.log("server console");
+
+  // Pass data to the page via props
+  return { props: { data } };
 }

@@ -11,7 +11,7 @@ export default function Admin({ children }) {
   return (
     <>
       <Sidebar />
-      <div className="relative md:ml-64 bg-red-500 ">
+      <div className="relative md:ml-64 bg-gray-200 ">
         <AdminNavbar />
         {/* </div> */}
         {/* <div className="relative md:ml-64 px-8"> */}

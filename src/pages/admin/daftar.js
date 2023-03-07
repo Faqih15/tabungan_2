@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
-
+import React from "react";
+// import { createSantriProfile } from "lib/daftsantri";
 // components
 
 import CardSettings from "components/Cards/CardSettings.js";
-import CardProfile from "components/Cards/CardProfile.js";
 
 // layout for page
 
@@ -16,7 +14,7 @@ function Settings() {
       <Admin>
         <div className="flex flex-wrap mt-4 relative md:ml-64 px-8">
           <div className="w-full lg:w-8/12">
-            <CardSettings />
+            <CardSettings csp={createSantriProfile} />
             {/* bg-orange-400 */}
           </div>
         </div>
