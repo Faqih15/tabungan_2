@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 // layout for page
-import Auth from "layouts/layoutAuth.js";
+import Auth from "layouts/layoutAuth.jsx";
 import { url } from "components/Links/Links";
 
 export default function Login(props) {

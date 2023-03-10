@@ -3,7 +3,7 @@ import React from "react";
 // import CardSettings from "components/Cards/CardSettings.js";
 
 import CardTable from "components/Cards/CardTable";
-import Admin from "layouts/layoutAdmin.js";
+import Admin from "layouts/layoutAdmin.jsx";
 
 export default function Home() {
   return (

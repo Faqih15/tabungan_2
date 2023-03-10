@@ -4,10 +4,7 @@ import Select from "react-select";
 import Link from "next/link";
 import { url } from "components/Links/Links";
 import axios from "axios";
-import crypto from "crypto";
-import { v4 as uuidv4 } from "uuid";
 // import excuteQuery from "../../lib/db";
-import moment from "moment";
 // import { createSantriProfile } from "lib/daftsantri";
 
 // components

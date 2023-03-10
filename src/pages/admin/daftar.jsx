@@ -2,11 +2,11 @@ import React from "react";
 // import { createSantriProfile } from "@lib/daftsantri";
 // components
 
-import CardSettings from "components/Cards/CardSettings.js";
+import CardSettings from "components/Cards/CardSettings.jsx";
 
 // layout for page
 
-import Admin from "layouts/layoutAdmin.js";
+import Admin from "layouts/layoutAdmin.jsx";
 
 function Settings() {
   return (

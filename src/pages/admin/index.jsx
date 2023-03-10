@@ -5,31 +5,31 @@ import Login from "./loginAdm";
 
 export default function index({ children }) {
   // const router = useRouter();
-  const [datalogin, setdatalogin] = useState(false);
-  const setlogin = (arg) => {
-    setdatalogin(arg);
-  };
-
+  // const [datalogin, setdatalogin] = useState(false);
+  // const setlogin = (arg) => {
+  //   setdatalogin(arg);
+  // };
+  return <Login />;
   // const firstdata = useMemo
   // useMemo(() => first, [second])
   // console.log(datalogin);
   // setdatalogin(!datalogin);
-  if (datalogin === false) {
-    return (
-      <>
-        <Login setlogin={setlogin} />
-        {/* <Home /> */}
-      </>
-    );
-    console.log("if");
-  } else if (datalogin === true) {
-    return (
-      <>
-        <Home />
-      </>
-    );
-  } else {
-  }
+  // if (datalogin === false) {
+  //   return (
+  //     <>
+  //       <Login setlogin={setlogin} />
+  //       {/* <Home /> */}
+  //     </>
+  //   );
+  //   console.log("if");
+  // } else if (datalogin === true) {
+  //   return (
+  //     <>
+  //       <Home />
+  //     </>
+  //   );
+  // } else {
+  // }
 }
 
 // import { useRouter } from "next/router";

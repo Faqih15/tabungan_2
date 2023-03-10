@@ -2,8 +2,8 @@ import React from "react";
 
 // components
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import FooterSmall from "components/Footers/FooterSmall.js";
+import Navbar from "components/Navbars/AuthNavbar";
+import FooterSmall from "components/Footers/FooterSmall";
 import SantriBuy from "components/Transaction/SantriBuy";
 
 export default function Auth({ children, data }) {
