@@ -15,7 +15,7 @@
     "fs": "^0.0.1-security",
     "moment": "^2.29.4",
     "net": "^1.0.2",
-    "next": "13.2.1",
+    "next": "^13.2.1",
     "next-connect": "^0.13.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
