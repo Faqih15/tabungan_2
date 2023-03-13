@@ -12,11 +12,11 @@ export async function createSantriProfile() {
     .toString("hex");
   const user = {
     id: 223344,
-    nama: "jahid",
-    nim: 1200,
+    nama: "iyam",
+    nim: 33127,
     alamat: "gomok",
-    orangtua: "abu jahid",
-    kelas: 1,
+    orangtua: "abu iyam",
+    kelas: 2,
     createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
     pass: password,
     hash: password,

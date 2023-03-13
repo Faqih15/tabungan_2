@@ -3,12 +3,13 @@ import { v4 as uuidv4 } from "uuid";
 import excuteQuery from "./db";
 import moment from "moment";
 
-export async function createUser() {
-  // console.log(password);
+export async function createUser({ email, password }) {
+  // value.preventDefault();
+  console.log(value, "value user.jsx/lib");
   // console.log(excuteQuery, "pool dr db");
 
-  const email = "sudo@gmail.com";
-  const password = "gaskencoy";
+  const email = email;
+  const password = password;
 
   const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 // import excuteQuery from "../../lib/db";
-import Link from "next/link";
+// import Link from "next/link";
 import { url } from "components/Links/Links";
 import axios from "axios";
 // import excuteQuery from "../../lib/db";

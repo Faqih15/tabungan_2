@@ -2,6 +2,7 @@
 
 import { createSantriProfile } from "@lib/daftsantri";
 
+console.log("halaman create-user");
 export default function handler(req, res) {
   if (req.method === "POST") {
     console.log(req, "req");
@@ -17,5 +18,5 @@ export default function handler(req, res) {
   //   res.status(200).json({ message: "berhasil menginput data" });
   //   return;
   // }
-  res.status(200).json({ name: "Jahis" });
+  res.status(200).json({ name: "create-user.js" });
 }
