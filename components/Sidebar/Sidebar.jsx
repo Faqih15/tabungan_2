@@ -92,6 +92,30 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   //   href="/"
+                  href="/admin/loginAdm"
+                  className={
+                    "text-xs uppercase py-3 font-bold block "
+                    //   +
+                    //   (router.pathname.indexOf("/admin/maps") !== -1
+                    //     ? "text-lightBlue-500 hover:text-lightBlue-600"
+                    //     : "text-blueGray-700 hover:text-blueGray-500")
+                  }
+                >
+                  <i
+                    className={
+                      "fas fa-map-marked mr-2 text-sm "
+                      // +
+                      // (router.pathname.indexOf("/admin/maps") !== -1
+                      //   ? "opacity-75"
+                      //   : "text-blueGray-300")
+                    }
+                  ></i>{" "}
+                  Login Admin
+                </Link>
+              </li>
+              <li className="items-center">
+                <Link
+                  //   href="/"
                   href="/admin/home"
                   className={
                     "text-xs uppercase py-3 font-bold block "
@@ -142,7 +166,7 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   //   href="/"
-                  href="#pablo"
+                  href="/admin/tambahadmin"
                   className={
                     "text-xs uppercase py-3 font-bold block "
                     //    +
@@ -160,32 +184,7 @@ export default function Sidebar() {
                       //   : "text-blueGray-300")
                     }
                   ></i>{" "}
-                  Tabungan
-                </Link>
-              </li>
-
-              <li className="items-center">
-                <Link
-                  //   href="/"
-                  href="#pablo"
-                  className={
-                    "text-xs uppercase py-3 font-bold block "
-                    //   +
-                    //   (router.pathname.indexOf("/admin/maps") !== -1
-                    //     ? "text-lightBlue-500 hover:text-lightBlue-600"
-                    //     : "text-blueGray-700 hover:text-blueGray-500")
-                  }
-                >
-                  <i
-                    className={
-                      "fas fa-map-marked mr-2 text-sm "
-                      // +
-                      // (router.pathname.indexOf("/admin/maps") !== -1
-                      //   ? "opacity-75"
-                      //   : "text-blueGray-300")
-                    }
-                  ></i>{" "}
-                  STOPPED
+                  Tambah Admin
                 </Link>
               </li>
             </ul>

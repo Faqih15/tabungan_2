@@ -11,7 +11,12 @@ export default function Admin({ children }) {
   return (
     <>
       <Sidebar />
-      <div className="relative md:ml-64 bg-gray-200 h-screen">
+      <div
+        className="relative md:ml-64 bg-gray-200 h-screen"
+        style={{
+          backgroundImage: "url('/img/register_bg_2.png')",
+        }}
+      >
         <AdminNavbar />
         {/* </div> */}
         {/* <div className="relative md:ml-64 px-8"> */}

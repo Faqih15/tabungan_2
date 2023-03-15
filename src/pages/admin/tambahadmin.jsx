@@ -14,7 +14,6 @@ function TambahAdmin() {
         email: email,
         password: password,
       };
-
       const response = await fetch("/api/create-user", {
         method: "POST",
         body: JSON.stringify(data),
@@ -29,15 +28,15 @@ function TambahAdmin() {
   return (
     <div>
       <Admin className="">
-        <div className="flex flex-wrap mt-4 relative md:ml-64 px-8">
-          <div className="w-full lg:w-8/12">
-            <div>
+        <div className="flex flex-wrap mt-4 relative md:ml-32 px-8">
+          <div className="w-full lg:w-6/12 border-2 border-blue-500 relative flex flex-col min-w-0 break-words mb-6 shadow-lg rounded-lg bg-neutral-100">
+            <div className="p-4 w-full">
               <h6 className="text-black text-sm mt-3 mb-6 font-bold uppercase">
                 Tambah Admin
               </h6>
               <form onSubmit={onSubmit}>
                 <section>
-                  <div className="w-full lg:w-6/12 px-4">
+                  <div className="w-full lg:w-10/12 px-4 justify-center">
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -57,7 +56,7 @@ function TambahAdmin() {
                       />
                     </div>
                   </div>
-                  <div className="w-full lg:w-6/12 px-4">
+                  <div className="w-full lg:w-10/12 px-4">
                     <div className="relative w-full mb-3">
                       <label
                         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
