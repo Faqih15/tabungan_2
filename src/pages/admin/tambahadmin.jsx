@@ -1,61 +1,106 @@
 import React, { useEffect, useState } from "react";
-import { createUser } from "lib/user";
+import Admin from "layouts/layoutAdmin";
+// import getServerSideProps from "admin/tambahadmin";
 
-function tambahAdmin() {
+function TambahAdmin() {
+
   console.log("client console");
-  const [value, setValue] = useState({
-    email: "",
-    password: "",
-  });
-  const onChange = (e) => {
-    setValue({ ...value, [e.target.name]: e.target.value });
-    // console.log(e.target.value, "e.target.value");
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
-    getServerSideProps({ email: value.email }, { password: value.password });
+    const postData = async () => {
+      const data = {
+        email: email,
+        password: password,
+      };
+
+      const response = await fetch("/api/create-user", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      console.log(response, "response");
+      return response.json();
+    };
+    postData().then((data) => {
+      console.log(data, "data.message");
+    });
   };
-  console.log(value, "value after input");
   return (
     <div>
-      tambahAdmin
-      <form onSubmit={onSubmit}>
-        <section>
+      <Admin className="">
+        <div className="flex flex-wrap mt-4 relative md:ml-64 px-8">
+          <div className="w-full lg:w-8/12">
+            <div>
+              <h6 className="text-black text-sm mt-3 mb-6 font-bold uppercase">
+                Tambah Admin
+              </h6>
+              <form onSubmit={onSubmit}>
+                <section>
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        Email
+                      </label>
+                      <input
+                        className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        onChange={(e) => setEmail(e.target.value)}
+                        type="text"
+                        id="nama"
+                        name="email"
+                        placeholder="Daftar email Admin"
+                        autoComplete="off"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        Password
+                      </label>
+                      <input
+                        onChange={(e) => setPassword(e.target.value)}
+                        type="number"
+                        id="password"
+                        name="password"
+                        className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        placeholder="Password Admin"
+                        autoComplete="off"
+                        required
+                      />
+                    </div>
+                  </div>
+                </section>
+                <button
+                  type="submit"
+                  className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75 cursor-not-allowed"
+                >
+                  SUBMIT FORM
+                </button>
+                {/* <section>
           <label>email</label>
           <input type="text" name="email" onChange={onChange}></input>
         </section>
         <section>
           <label>password</label>
           <input type="password" name="password" onChange={onChange}></input>
-        </section>
-      </form>
+        </section> */}
+              </form>
+            </div>
+            {/* bg-orange-400 */}
+          </div>
+        </div>
+      </Admin>
     </div>
   );
 }
 
-export async function getServerSideProps(context) {
-  // const value = context.req.body;
-  const email = context.req.body.email;
-  const password = context.req.body.password;
 
-  const user = await createUser({ email: email }, { password: password });
-  console.log(value, "server console");
-
-  // Pass data to the page via props
-  return { props: { user } };
-}
-
-export default tambahAdmin;
-
-// Fetch data from external API
-// const res = await fetch(`https://.../data`)
-// const data = await res.json()
-// const data = {};
-
-// useEffect(() => {
-//   const fetchData = async () => {
-//     const data = await createUser();
-//   };
-//   fetchData();
-// });
-// console.log(data);
+export default TambahAdmin;

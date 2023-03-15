@@ -268,7 +268,7 @@ export default function CardSettings({ props }) {
               type="submit"
               className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75 cursor-not-allowed"
             >
-              SUBMIT FORM
+              DAFTARKAN MURID
             </button>
 
             <hr className="mt-6 border-b-1 border-blueGray-300 pb-2" />

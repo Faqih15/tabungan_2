@@ -2,6 +2,7 @@ import crypto from "crypto";
 import { v4 as uuidv4 } from "uuid";
 import excuteQuery from "./db";
 import moment from "moment";
+
 export async function createSantriProfile() {
   // console.log(password);  // console.log(excuteQuery, "pool dr db");
   const email = "sudo@gmail.com";

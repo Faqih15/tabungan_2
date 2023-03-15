@@ -6,7 +6,7 @@ import Link from "next/link";
 import Auth from "layouts/layoutAuth";
 import SantriBuy from "components/Transaction/SantriBuy";
 
-export default function Transaction({ ayam }) {
+export default function Transaction(ayam ) {
   // const [dataLogin, setdataLogin] = useState(false);
   console.log(ayam, "data ayam dari index.js");
   return (

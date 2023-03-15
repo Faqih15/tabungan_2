@@ -3,20 +3,13 @@ import { v4 as uuidv4 } from "uuid";
 import excuteQuery from "./db";
 import moment from "moment";
 
-export async function createUser({ email, password }) {
-  // value.preventDefault();
-  console.log(value, "value user.jsx/lib");
-  // console.log(excuteQuery, "pool dr db");
-
-  const email = email;
-  const password = password;
-
+export async function createUser({email, password}) {
+  console.log("lib/user.jsx");
   const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto
     .pbkdf2Sync(password, salt, 1000, 64, "sha512")
     .toString("hex");
   const user = {
-    id: uuidv4(),
     createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
     email,
     hash,
@@ -27,7 +20,7 @@ export async function createUser({ email, password }) {
     console.log(user, "user");
     const result = await excuteQuery({
       query:
-        "INSERT INTO users (id, createdAt, email, hash, salt) VALUES(?, ?, ?, ?, ?)",
+        "INSERT INTO admin_create (createdAt, email, hash, salt) VALUES(?, ?, ?, ?)",
       values: [
         user.id,
         user.createdAt.toString(),
