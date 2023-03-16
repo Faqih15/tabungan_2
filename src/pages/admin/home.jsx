@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="">
       <>
-        <Admin />
+        <Admin >
         <div className="flex flex-wrap mt-4 relative md:ml-64 px-8">
           <div className="w-full mb-12 ">
             <CardTable />
@@ -18,6 +18,7 @@ export default function Home() {
             <CardTable color="dark" />
           </div>
         </div>
+        </Admin>
       </>
     </div>
   );
