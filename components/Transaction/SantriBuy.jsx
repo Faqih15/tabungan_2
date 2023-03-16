@@ -1,8 +1,24 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 function SantriBuy({ data }) {
-  console.log("props data dari transaction.js ke santribuy");
+  const [hasilinput, sethasilinput] = useState({
+    nama: "",
+    nim: "",
+    transaksi: "",
+    pin: "",
+  });
+
+  const onchange = (e) => {
+    sethasilinput({ ...hasilinput, [e.target.name]: e.target.value });
+    console.log(e.target.value, "e.target.value");
+  };
+  const onsubmit = (e) => {
+    e.preventDefault();
+    console.log(hasilinput, "hasilinput");
+  };
+
+  // console.log("props data dari transaction.js ke santribuy");
   return (
     <div className="container mx-auto px-4 h-full">
       <div className="flex content-center items-center justify-center h-full">
@@ -20,7 +36,7 @@ function SantriBuy({ data }) {
               <div className="text-blueGray-400 text-center mb-3 font-bold">
                 <small>Or sign in with credentials</small>
               </div>
-              <form>
+              <form onSubmit={onsubmit}>
                 <div className="relative w-full mb-3">
                   <label
                     className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -29,10 +45,13 @@ function SantriBuy({ data }) {
                     User
                   </label>
                   <input
+                    onChange={onchange}
                     type="text"
+                    id="nama"
+                    name="nama"
                     autoComplete="off"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Email"
+                    placeholder="Name"
                   />
                 </div>
 
@@ -44,7 +63,10 @@ function SantriBuy({ data }) {
                     NIM
                   </label>
                   <input
+                    onChange={onchange}
                     type="number"
+                    id="nim"
+                    name="nim"
                     min="30001"
                     max="35999"
                     autoComplete="off"
@@ -60,7 +82,10 @@ function SantriBuy({ data }) {
                     Nilai Transaksi
                   </label>
                   <input
+                    onChange={onchange}
                     type="number"
+                    id="transaksi"
+                    name="transaksi"
                     min="100"
                     max="30000"
                     autoComplete="off"
@@ -76,7 +101,10 @@ function SantriBuy({ data }) {
                     PIN
                   </label>
                   <input
+                    onChange={onchange}
                     type="password"
+                    id="pin"
+                    name="pin"
                     autoComplete="off"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Password"
@@ -101,7 +129,7 @@ function SantriBuy({ data }) {
                 <div className="text-center mt-6">
                   <button
                     className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                    type="button"
+                    type="submit"
                   >
                     Sign In
                   </button>

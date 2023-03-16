@@ -8,7 +8,7 @@ import SantriBuy from "components/Transaction/SantriBuy";
 
 export default function Transaction(ayam ) {
   // const [dataLogin, setdataLogin] = useState(false);
-  console.log(ayam, "data ayam dari index.js");
+  // console.log(ayam, "data ayam dari index.js");
   return (
     <>
       <div>

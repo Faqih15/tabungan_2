@@ -89,16 +89,11 @@ const menuStyle = {
 };
 
 export default function CardSettings({ props }) {
-  // console.log(excuteQuery, "excuteQuery");
-  const [data, setdata] = useState([]);
-
   const [datapertama, setdatapertama] = useState({
     nama: "",
     nim: "",
-    alamat: "",
     orangtua: "",
     kelas: "",
-    duit: "",
   });
 
   const mendaftar = (e) => {
@@ -108,22 +103,9 @@ export default function CardSettings({ props }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(`${url}/posts`, datapertama)
-      .then((respon) => {
-        // alert("berhasil post data pakai axios");
-        // pindah halaman-kosongkan input
-        console.log(respon, "berhasil");
-      })
-      .catch((x) => {
-        // alert("GAGAL CUY");
-        console.log(x, "gagal");
-      });
+    
     // e.target.reset();
   };
-  // console.log(datapertama, "data baris 133");
-  console.log(`${url}/posts`, "url/posts");
-  // console.log(datapertama, "DATA PERTAMA 108");
 
   return (
     <>
@@ -172,26 +154,6 @@ export default function CardSettings({ props }) {
                     max="35999"
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Masukkan NIM Santri"
-                    autoComplete="off"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="w-full lg:w-6/12 px-4">
-                <div className="relative w-full mb-3">
-                  <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    htmlFor="grid-password"
-                  >
-                    Alamat
-                  </label>
-                  <input
-                    onChange={mendaftar}
-                    type="text"
-                    id="alamat"
-                    name="alamat"
-                    className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Masukkan Alamat Santri"
                     autoComplete="off"
                     required
                   />
@@ -266,7 +228,7 @@ export default function CardSettings({ props }) {
             </div>
             <button
               type="submit"
-              className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75 cursor-not-allowed"
+              className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75"
             >
               DAFTARKAN MURID
             </button>

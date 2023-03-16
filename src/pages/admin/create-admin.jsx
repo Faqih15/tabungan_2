@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Admin from "layouts/layoutAdmin";
-// import getServerSideProps from "admin/tambahadmin";
-
-function TambahAdmin() {
-
-  console.log("client console");
+function Administrator() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const onSubmit = (e) => {
+  const addAdmin = (e) => {
     e.preventDefault();
     const postData = async () => {
       const data = {
         email: email,
         password: password,
       };
-      const response = await fetch("/api/create-user", {
+      const response = await fetch("/api/create-admin-api", {
         method: "POST",
         body: JSON.stringify(data),
       });
@@ -24,7 +20,16 @@ function TambahAdmin() {
     postData().then((data) => {
       console.log(data, "data.message");
     });
+    e.target.reset()
   };
+  function myFunction() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
   return (
     <div>
       <Admin className="">
@@ -34,7 +39,7 @@ function TambahAdmin() {
               <h6 className="text-black text-sm mt-3 mb-6 font-bold uppercase">
                 Tambah Admin
               </h6>
-              <form onSubmit={onSubmit}>
+              <form onSubmit={addAdmin}>
                 <section>
                   <div className="w-full lg:w-10/12 px-4 justify-center">
                     <div className="relative w-full mb-3">
@@ -66,9 +71,10 @@ function TambahAdmin() {
                       </label>
                       <input
                         onChange={(e) => setPassword(e.target.value)}
-                        type="number"
+                        type="password"
                         id="password"
                         name="password"
+                        minLength="8"
                         className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Password Admin"
                         autoComplete="off"
@@ -76,24 +82,16 @@ function TambahAdmin() {
                       />
                     </div>
                   </div>
+                  {/* <input type="checkbox" onclick="myFunction()"></input> */}
                 </section>
                 <button
                   type="submit"
-                  className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75 cursor-not-allowed"
+                  className="bg-pink-600 text-white font-bold mt-5 py-2 px-4 rounded opacity-75"
                 >
                   SUBMIT FORM
                 </button>
-                {/* <section>
-          <label>email</label>
-          <input type="text" name="email" onChange={onChange}></input>
-        </section>
-        <section>
-          <label>password</label>
-          <input type="password" name="password" onChange={onChange}></input>
-        </section> */}
               </form>
             </div>
-            {/* bg-orange-400 */}
           </div>
         </div>
       </Admin>
@@ -101,5 +99,4 @@ function TambahAdmin() {
   );
 }
 
-
-export default TambahAdmin;
+export default Administrator;

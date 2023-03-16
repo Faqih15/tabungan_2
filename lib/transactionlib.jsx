@@ -3,46 +3,36 @@ import { v4 as uuidv4 } from "uuid";
 import excuteQuery from "./db";
 import moment from "moment";
 
-export async function createSantriProfile() {
-  // console.log(password);  // console.log(excuteQuery, "pool dr db");
-  const email = "sudo@gmail.com";
-  const password = "gaskencoy";
+export async function createUser() {
+  console.log("lib/user.jsx");
   const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto
     .pbkdf2Sync(password, salt, 1000, 64, "sha512")
     .toString("hex");
   const user = {
-    id: 223344,
-    nama: "iyam",
-    nim: 33127,
-    alamat: "gomok",
-    orangtua: "abu iyam",
-    kelas: 2,
     createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
-    pass: password,
-    hash: password,
+    email,
+    hash,
+    salt,
   };
+
   try {
     console.log(user, "user");
-
     const result = await excuteQuery({
       query:
-        "INSERT INTO data_santri (id, nama, nim, alamat, orangtua, kelas, createdAt, pass, hash) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO admin_create (createdAt, email, hash, salt) VALUES(?, ?, ?, ?)",
       values: [
         user.id,
-        user.nama,
-        user.nim,
-        user.alamat,
-        user.orangtua,
-        user.kelas,
         user.createdAt.toString(),
-        user.pass,
+        user.email,
         user.hash,
+        user.salt,
       ],
     });
     console.log(result);
   } catch (error) {
     console.log(error);
   }
+
   return user;
 }

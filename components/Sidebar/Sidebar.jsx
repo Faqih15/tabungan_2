@@ -26,7 +26,7 @@ export default function Sidebar() {
 
           <Link
             //   href="/"
-            href="#pablo"
+            href="/"
             className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
           >
             KOPERASI MAHAD
@@ -141,7 +141,7 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   //   href="/"
-                  href="/admin/daftar"
+                  href="/admin/new-santri"
                   className={
                     "text-xs uppercase py-3 font-bold block "
                     //   +
@@ -159,14 +159,14 @@ export default function Sidebar() {
                       //   : "text-blueGray-300")
                     }
                   ></i>{" "}
-                  Daftar
+                  New Santri
                 </Link>
               </li>
 
               <li className="items-center">
                 <Link
                   //   href="/"
-                  href="/admin/tambahadmin"
+                  href="/admin/create-admin"
                   className={
                     "text-xs uppercase py-3 font-bold block "
                     //    +

@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import { createUser } from "@lib/user";
+import { createUser } from "@lib/create-admin-lib";
 
 export default function handler(req, res) {
   if (req.method === "POST") {
@@ -10,7 +10,7 @@ export default function handler(req, res) {
       case 'POST':
         console.log(body)
         createUser(body)
-        res.status(200).json({ message: 'create user success'})
+        res.status(200).json({ message: 'berhasil new santri'})
       // handle other HTTP methods
       default:
         res.status(200).json({ message: 'Create user API'})
