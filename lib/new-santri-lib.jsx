@@ -3,22 +3,22 @@ import { v4 as uuidv4 } from "uuid";
 import excuteQuery from "./db";
 import moment from "moment";
 
-export async function createSantriProfile() {
+export async function createSantriProfile({nama, nim, orangtua, kelas, password}) {
   // console.log(password);  // console.log(excuteQuery, "pool dr db");
-  const email = "sudo@gmail.com";
-  const password = "gaskencoy";
+  // const email = "sudo@gmail.com";
+  // const password = "gaskencoy";
   const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto
     .pbkdf2Sync(password, salt, 1000, 64, "sha512")
     .toString("hex");
   const user = {
-    nama: "iyam",
-    nim: 33127,
-    orangtua: "abu iyam",
-    kelas: 2,
     createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
-    pass: password,
-    hash: password,
+    nama,
+    nim,
+    orangtua,
+    kelas,
+    hash,
+    salt,
   };
   try {
     console.log(user, "user");
@@ -30,11 +30,10 @@ export async function createSantriProfile() {
         user.createdAt.toString(),
         user.nama,
         user.nim,
-        user.alamat,
         user.orangtua,
         user.kelas,
-        user.pass,
         user.hash,
+        user.salt,
       ],
     });
     console.log(result);
