@@ -94,17 +94,35 @@ export default function CardSettings({ props }) {
     nim: "",
     orangtua: "",
     kelas: "",
+    password:"",
   });
 
   const mendaftar = (e) => {
     setdatapertama({ ...datapertama, [e.target.name]: e.target.value });
-    // console.log(e.target.value, "e.target.value");
+    console.log(e.target.value, "e.target.value");
   };
 
-  const onSubmit = (e) => {
+  const newSantri = (e) => {
     e.preventDefault();
-    
-    // e.target.reset();
+    const newsantri = async () => {
+      const data = {
+        nama: datapertama.nama,
+        nim: datapertama.nim,
+        orangtua: datapertama.orangtua,
+        kelas: datapertama.kelas,
+        password: datapertama.password,
+      };
+      console.log(data, "data 115");
+      
+      const kirim = await fetch("/api/new-santri-api", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      console.log(kirim, "kirim");
+      return kirim.json();
+    };
+    newsantri();
+    e.target.reset();
   };
 
   return (
@@ -112,7 +130,9 @@ export default function CardSettings({ props }) {
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
         <section className="rounded-t mb-0 px-6 py-6"></section>
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form onSubmit={onSubmit}>
+          <form 
+          onSubmit={newSantri}
+          >
             <h6 className="text-black text-sm mt-3 mb-6 font-bold uppercase">
               User Information
             </h6>
@@ -130,7 +150,7 @@ export default function CardSettings({ props }) {
                     onChange={mendaftar}
                     type="text"
                     id="nama"
-                    name="surname"
+                    name="nama"
                     placeholder="Masukkan Nama Santri"
                     autoComplete="off"
                     required
@@ -151,7 +171,7 @@ export default function CardSettings({ props }) {
                     id="nim"
                     name="nim"
                     min="30001"
-                    max="35999"
+                    max="39099"
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Masukkan NIM Santri"
                     autoComplete="off"

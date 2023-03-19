@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Admin from "layouts/layoutAdmin";
+// import handler from "../api/create-admin-api";
 function Administrator() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,6 +21,8 @@ function Administrator() {
     postData().then((data) => {
       console.log(data, "data.message");
     });
+    // handler();
+    // console.log(handler());
     e.target.reset()
   };
   function myFunction() {
