@@ -10,7 +10,7 @@ export default function Home() {
    <div className="">
       <>
         <Admin >
-        <div className="flex flex-wrap mt-4 relative md:ml-64 px-8">
+        <div className="flex flex-wrap mt-4 relative md:ml-32 md:mr-10">
           <div className="w-full mb-12 ">
             <CardTable />
           </div>

@@ -25,7 +25,10 @@ export default function Admin({ children }) {
         </div>
         <div className="px-4 md:px-10 mx-auto w-full zm-24 ">
           {children}
-          <FooterAdmin />
+        </div>
+        <div>
+        <FooterAdmin />
+
         </div>
       </div>
     </>

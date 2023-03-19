@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-// import { getNewSanntri } from "@lib/db";
-
-// import TableDropdown from "components/Dropdowns/TableDropdown.js";
 
 export default function CardTable({ color }) {
   const [newSanntri, setNewSanntri] = useState([]);
@@ -11,7 +8,30 @@ export default function CardTable({ color }) {
       .then((res) => res.json())
       .then((data) => setNewSanntri(data));
   }, []);
-  console.log(newSanntri);
+
+  const onHapus = (e, i, k) => {
+    console.log(e, "e");
+    console.log(i, "i");
+    console.log(k, "k");
+    const hapus = async () => {
+      const mauDihapus = [...newSanntri];
+
+
+      const hapuss = await fetch("/api/new-santri-api" + i, {
+        method: "DELETE",
+      });
+      return hapuss.json();
+    };
+    hapus();
+    // newTodo.splice(i, 1);
+    // setTodo(newTodo);
+  };
+
+  // function deleteData(item, url) {
+  //   return fetch(url + "/" + item, {
+  //     method: "delete",
+  //   }).then((response) => response.json());
+  // }
   return (
     <>
       <div
@@ -20,9 +40,9 @@ export default function CardTable({ color }) {
           (color === "light" ? "bg-white" : "bg-blueGray-700 text-white")
         }
       >
-        <div className="rounded-t mb-0 px-4 py-3 border-0">
+        <div className="rounded-t mb-0 px-4 py-3 border-0 bg-slate-200">
           <div className="flex flex-wrap items-center">
-            <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+            <div className="relative w-full px-4 max-w-full flex-grow flex-1 ">
               <h3
                 className={
                   "font-semibold text-lg " +
@@ -40,14 +60,12 @@ export default function CardTable({ color }) {
           </div>
         </div>
         <section className="block w-full overflow-x-auto">
-          {/* Projects table */}
-
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
                 <th
                   className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
@@ -57,7 +75,7 @@ export default function CardTable({ color }) {
                 </th>
                 <th
                   className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
@@ -67,7 +85,7 @@ export default function CardTable({ color }) {
                 </th>
                 <th
                   className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
@@ -75,10 +93,10 @@ export default function CardTable({ color }) {
                 >
                   Nim
                 </th>
-               
+
                 <th
                   className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
@@ -88,7 +106,7 @@ export default function CardTable({ color }) {
                 </th>
                 <th
                   className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
@@ -98,28 +116,28 @@ export default function CardTable({ color }) {
                 </th>
                 <th
                   className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Edit Data
+                  Hapus Profil
                 </th>
                 <th
                   className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  SALDO
+                  Edit Profil
                 </th>
               </tr>
             </thead>
             <tbody>
-              {newSanntri.map((santri) => {
+              {newSanntri.map((santri, idxx) => {
                 return (
                   <tr key={santri.id} className="bg-slate-300">
                     <th>
@@ -145,7 +163,7 @@ export default function CardTable({ color }) {
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {santri.nim}
                     </td>
-                    
+
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       <div className="flex">
                         <span> {santri.orangtua}</span>
@@ -157,9 +175,17 @@ export default function CardTable({ color }) {
                       </div>
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <button class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center">
-                <span>Edit Santri</span>
-              </button>
+                      <button
+                        class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
+                        onClick={(e) => onHapus(e, santri, idxx)}
+                      >
+                        Hapus
+                      </button>
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <button class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center">
+                        <span>Edit Santri</span>
+                      </button>
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
                       {/* <TableDropdown /> */}
