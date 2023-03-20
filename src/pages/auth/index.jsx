@@ -1,10 +1,5 @@
 import Head from "next/head";
-// import Image from "next/image";
 import { Inter } from "next/font/google";
-// import styles from "@/styles/Home.module.css";
-// import Sidebar from "components/Sidebar/Sidebar.js";
-// import Dashboard from "./admin/home";
-// import Transaction from "layouts/Transaction";
 import React from "react";
 import Login from "./transaction";
 
@@ -18,7 +13,6 @@ export default function Home() {
         {/* <Dashboard /> */}
         <div>/auth/index</div>
         <Login ayam={"ayam index.js"} />
-        {/* <div>ayam</div> */}
       </Head>
       <main></main>
     </>

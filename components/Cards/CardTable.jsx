@@ -173,9 +173,15 @@ export default function CardTable({ color }) {
                       </button>
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <button class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center">
+                      <Link
+                        href={{
+                          pathname: "/admin/edit-santri",
+                          query: santri,
+                        }}
+                        class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
+                      >
                         <span>Edit Santri</span>
-                      </button>
+                      </Link>
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       <div className="flex items-center">

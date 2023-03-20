@@ -21,8 +21,6 @@ function Administrator() {
     postData().then((data) => {
       console.log(data, "data.message");
     });
-    // handler();
-    // console.log(handler());
     e.target.reset()
   };
   function myFunction() {
@@ -85,7 +83,6 @@ function Administrator() {
                       />
                     </div>
                   </div>
-                  {/* <input type="checkbox" onclick="myFunction()"></input> */}
                 </section>
                 <button
                   type="submit"

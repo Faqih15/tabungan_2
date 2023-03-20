@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-function SantriBuy({ data }) {
+function SantriBuy() {
   const [hasilinput, sethasilinput] = useState({
     nama: "",
     nim: "",
@@ -18,7 +18,6 @@ function SantriBuy({ data }) {
     console.log(hasilinput, "hasilinput");
   };
 
-  // console.log("props data dari transaction.js ke santribuy");
   return (
     <div className="container mx-auto px-4 h-full">
       <div className="flex content-center items-center justify-center h-full">

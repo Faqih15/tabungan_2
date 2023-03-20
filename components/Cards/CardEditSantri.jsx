@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import { datakelas } from "./DataKelas";
+import CardTable from "./CardTable";
+import { useRouter } from "next/router";
 
 const menuStyle = {
   menu: (base) => ({
@@ -34,7 +36,7 @@ const menuStyle = {
   }),
 };
 
-export default function CardSettings({ props }) {
+export default function CardEditSantri(santriPerID) {
   const [datapertama, setdatapertama] = useState({
     nama: "",
     nim: "",
@@ -70,15 +72,22 @@ export default function CardSettings({ props }) {
     newsantri();
     e.target.reset();
   };
+  const tampilkanprops = () => {
+    console.log(santriPerID, "santriPerID");
+  };
+  const router = useRouter();
+  const ss = router.query;
+  console.log(ss, "santriPerID");
+  // console.log(ss.name, "ss.name");
 
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
-        <section className="rounded-t mb-0 px-6 py-6"></section>
+        {/* <section className="rounded-t mb-0 px-6 py-6"></section> */}
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
           <form onSubmit={newSantri}>
-            <h6 className="text-black text-sm mb-10 font-bold uppercase">
-              User Information
+            <h6 className="text-black text-sm mt-8 mb-10 font-bold uppercase">
+              Edit Santri by Index
             </h6>
             <div className="flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4">
@@ -93,9 +102,10 @@ export default function CardSettings({ props }) {
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     onChange={mendaftar}
                     type="text"
+                    value={ss.nama}
                     id="nama"
                     name="nama"
-                    placeholder="Masukkan Nama Santri"
+                    placeholder="Edit Nama Santri"
                     autoComplete="off"
                     required
                   />
@@ -112,12 +122,13 @@ export default function CardSettings({ props }) {
                   <input
                     onChange={mendaftar}
                     type="number"
+                    value={ss.nim}
                     id="nim"
                     name="nim"
                     min="30001"
                     max="39099"
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Masukkan NIM Santri"
+                    placeholder="Edit NIM Santri"
                     autoComplete="off"
                     required
                   />
@@ -134,10 +145,11 @@ export default function CardSettings({ props }) {
                   <input
                     onChange={mendaftar}
                     type="text"
+                    value={ss.orangtua}
                     id="orangtua"
                     name="orangtua"
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Masukkan Nama Orang Tua"
+                    placeholder="Edit Nama Orang Tua"
                     autoComplete="off"
                     required
                   />
@@ -159,13 +171,14 @@ export default function CardSettings({ props }) {
                     }
                     blurInputOnSelect={false} //set by default, but to be sure
                     options={datakelas}
+                    // value={ss.kelas}
                     type="text"
                     id="kelas"
                     name="kelas"
                     styles={menuStyle}
                     className=" border-0 px-1 py-1 text-slate-900 bg-white rounded text-sm 
                     shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Pilih Kelas Santri"
+                    placeholder="Edit Kelas Santri"
                   />
                 </div>
               </div>
@@ -178,12 +191,12 @@ export default function CardSettings({ props }) {
                     Password
                   </label>
                   <input
-                    onChange={mendaftar}
+                    // onChange={mendaftar}
                     type="text"
                     id="password"
                     name="password"
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Masukkan Password Anda"
+                    placeholder="edit password disable dulu, dev males"
                     autoComplete="off"
                     required
                   />
@@ -192,9 +205,15 @@ export default function CardSettings({ props }) {
             </div>
             <button
               type="submit"
+              className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75 uppercase"
+            >
+              save editing
+            </button>
+            <button
+              onClick={tampilkanprops}
               className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75"
             >
-              DAFTARKAN MURID
+              tampil dong
             </button>
 
             <hr className="mt-6 border-b-1 border-blueGray-300 pb-2" />

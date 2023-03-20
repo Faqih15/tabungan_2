@@ -16,18 +16,3 @@ export default async function mapdatasantri(req, res) {
   }
 }
 
-// export default function mapdatasantri(req, res) {
-//   if (req.method === "GET") {
-//     const requestMethod = req.method;
-//     const body = JSON.parse(req.body);
-//     switch (requestMethod) {
-//       case 'GET':
-//         console.log(body)
-//         mapSantri()
-//         res.status(200).json({ message: 'tampilkan santri'})
-//       // handle other HTTP methods
-//       default:
-//         res.status(200).json({ message: 'show user API'})
-//     }
-//   }
-// }

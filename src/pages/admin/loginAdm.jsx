@@ -14,12 +14,8 @@ export default function Login(props) {
 
   const cekLogin = (e) => {
     e.preventDefault();
-    // console.log(e.target);
-
-    // mujahidfaqihuddin@gmail.com
     const emailuser = e.target.emailoruser.value;
     const password = e.target.password.value;
-    // setstatusLogin({ isLogin: true });
     if (
       emailuser === "mujahidfaqihuddin@gmail.com" &&
       password === "gaskencoy"
@@ -116,13 +112,6 @@ export default function Login(props) {
                       <small>Forgot password?</small>
                     </a>
                   </div>
-                  {/* <div className="w-1/2 text-right">
-                <Link href="/auth/register">
-                  <a href="#pablo" className="text-blueGray-200">
-                    <small>Create new account</small>
-                  </a>
-                </Link>
-              </div> */}
                 </div>
               </div>
             </div>
@@ -132,37 +121,3 @@ export default function Login(props) {
     </>
   );
 }
-
-// Login.layout = Auth;
-
-// const [inputLogin, setinputLogin] = useState({
-//   emailoruser: "",
-//   password: "",
-// });
-
-// const inputed = (e) => {
-//   setinputLogin({
-//     [e.target.name]: e.target.value,
-//     [e.target.password]: e.target.value,
-//   });
-//   // console.log(e.target.value, "e.target.value");
-// };
-
-// axios
-//   .get(`${url}/admins`)
-//   .then(function (response) {
-//     // handle success
-//     // setstatusLogin(inputRef.current.value);
-//     // console.log("axios get berhasil");
-//     // console.log(inputLogin, "inputLogin");
-//     if(`${url}/admins`){
-//       console.log(`${url}/admins`);
-//     }
-//   })
-//   .catch(function (error) {
-//     // handle error
-//     console.log(error, "axios error");
-//   })
-//   .finally(function () {
-//     // always executed
-//   });

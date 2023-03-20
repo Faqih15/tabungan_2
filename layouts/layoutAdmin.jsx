@@ -1,7 +1,4 @@
 import React from "react";
-
-// components
-
 import AdminNavbar from "components/Navbars/AdminNavbar.jsx";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
 import HeaderStats from "components/Headers/HeaderStats.jsx";
@@ -18,17 +15,12 @@ export default function Admin({ children }) {
         }}
       >
         <AdminNavbar />
-        {/* </div> */}
-        {/* <div className="relative md:ml-64 px-8"> */}
         <div className="">
           <HeaderStats />
         </div>
-        <div className="px-4 md:px-10 mx-auto w-full zm-24 ">
-          {children}
-        </div>
+        <div className="px-4 md:px-10 mx-auto w-full zm-24 ">{children}</div>
         <div>
-        <FooterAdmin />
-
+          <FooterAdmin />
         </div>
       </div>
     </>
