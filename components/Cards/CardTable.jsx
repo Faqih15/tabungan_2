@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
 export default function CardTable({ color }) {
   const [newSanntri, setNewSanntri] = useState([]);
@@ -9,29 +10,16 @@ export default function CardTable({ color }) {
       .then((data) => setNewSanntri(data));
   }, []);
 
-  const onHapus = (e, i, k) => {
+  const onHapus = async (e, santri_id, idxx) => {
+    e.preventDefault();
     console.log(e, "e");
-    console.log(i, "i");
-    console.log(k, "k");
-    const hapus = async () => {
-      const mauDihapus = [...newSanntri];
-
-
-      const hapuss = await fetch("/api/new-santri-api" + i, {
-        method: "DELETE",
-      });
-      return hapuss.json();
-    };
-    hapus();
-    // newTodo.splice(i, 1);
-    // setTodo(newTodo);
+    console.log(santri_id, "santri");
+    return await fetch("/api/del-sant-api", {
+      method: "delete",
+      body: santri_id,
+    }).then((response) => response.json());
   };
 
-  // function deleteData(item, url) {
-  //   return fetch(url + "/" + item, {
-  //     method: "delete",
-  //   }).then((response) => response.json());
-  // }
   return (
     <>
       <div
@@ -53,9 +41,12 @@ export default function CardTable({ color }) {
               </h3>
             </div>
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-              <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center">
+              <Link
+                href="/admin/new-santri"
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
+              >
                 <span>Add New Santri</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -163,7 +154,6 @@ export default function CardTable({ color }) {
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {santri.nim}
                     </td>
-
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       <div className="flex">
                         <span> {santri.orangtua}</span>
@@ -177,7 +167,7 @@ export default function CardTable({ color }) {
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       <button
                         class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
-                        onClick={(e) => onHapus(e, santri, idxx)}
+                        onClick={(e) => onHapus(e, santri.id)}
                       >
                         Hapus
                       </button>
@@ -186,6 +176,11 @@ export default function CardTable({ color }) {
                       <button class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center">
                         <span>Edit Santri</span>
                       </button>
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <div className="flex items-center">
+                        <span className="mr-2">{santri.createdAt}</span>
+                      </div>
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
                       {/* <TableDropdown /> */}

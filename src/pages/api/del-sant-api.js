@@ -1,17 +1,18 @@
 import { delSantri } from "@lib/del-sant-lib";
 
-export default async function mapdatasantri(req, res) {
+export default function handler(req, res) {
   if (req.method === "DELETE") {
-    try {
-      const users = await delSantri();
-      // res.status(200).json({ message: 'Tampilkan santri', data: users });
-      res.status(200).json(users);
-
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: 'Internal server error' });
+    const requestMethod = req.method;
+    const id = req.body;
+    switch (requestMethod) {
+      case 'DELETE':
+        console.log(req.body, "req req req req req req")
+        // console.log(res, "res res res res res res res res res res ")
+        delSantri(id)
+        res.status(200).json({ message: 'berhasil new santri'})
+       // handle other HTTP methods
+      default:
+        res.status(200).json({ message: 'Create user API'})
     }
-  } else {
-    res.status(400).json({ message: 'Invalid request method' });
   }
 }

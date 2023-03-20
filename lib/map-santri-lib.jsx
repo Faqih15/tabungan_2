@@ -8,6 +8,8 @@ export async function mapSantri() {
 
     const users = results.map((result) => {
       return {
+        id: result.id,
+        createdAt: result.createdAt,
         nama: result.nama,
         nim: result.nim,
         orangtua: result.orangtua,

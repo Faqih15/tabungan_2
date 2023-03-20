@@ -4,9 +4,6 @@ import excuteQuery from "./db";
 import moment from "moment";
 
 export async function createSantriProfile({nama, nim, orangtua, kelas, password}) {
-  // console.log(password);  // console.log(excuteQuery, "pool dr db");
-  // const email = "sudo@gmail.com";
-  // const password = "gaskencoy";
   const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto
     .pbkdf2Sync(password, salt, 1000, 64, "sha512")

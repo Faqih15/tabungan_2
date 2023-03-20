@@ -1,61 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
-// import excuteQuery from "../../lib/db";
-// import Link from "next/link";
-import { url } from "components/Links/Links";
-import axios from "axios";
-// import excuteQuery from "../../lib/db";
-// import { createSantriProfile } from "lib/daftsantri";
+import {datakelas} from "./DataKelas";
 
-// components
-
-const status = [
-  {
-    value: "Aliyah 1",
-    label: "Aliyah 1",
-    kode: "",
-  },
-  {
-    value: "Aliyah 2",
-    label: "Aliyah 2",
-    kode: "",
-  },
-  {
-    value: "Aliyah 3",
-    label: "Aliyah 3",
-    kode: "",
-  },
-  {
-    value: "Mu'allimin 1",
-    label: "Mu'allimin 1",
-    kode: "",
-  },
-  {
-    value: "Mu'allimin 2",
-    label: "Mu'allimin 2",
-    kode: "",
-  },
-  {
-    value: "Mu'allimin 3",
-    label: "Mu'allimin 3",
-    kode: "",
-  },
-  {
-    value: "Ahlu Kitabah",
-    label: "Ahlu Kitabah",
-    kode: "",
-  },
-  {
-    value: "Munaqasyah",
-    label: "Munaqasyah",
-    kode: "",
-  },
-  {
-    value: "Selesai Munaq",
-    label: "Selesai Munaq",
-    kode: "",
-  },
-];
 const menuStyle = {
   menu: (base) => ({
     ...base,
@@ -94,7 +40,7 @@ export default function CardSettings({ props }) {
     nim: "",
     orangtua: "",
     kelas: "",
-    password:"",
+    password: "",
   });
 
   const mendaftar = (e) => {
@@ -113,7 +59,7 @@ export default function CardSettings({ props }) {
         password: datapertama.password,
       };
       console.log(data, "data 115");
-      
+
       const kirim = await fetch("/api/new-santri-api", {
         method: "POST",
         body: JSON.stringify(data),
@@ -130,9 +76,7 @@ export default function CardSettings({ props }) {
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
         <section className="rounded-t mb-0 px-6 py-6"></section>
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form 
-          onSubmit={newSantri}
-          >
+          <form onSubmit={newSantri}>
             <h6 className="text-black text-sm mt-3 mb-6 font-bold uppercase">
               User Information
             </h6>
@@ -214,7 +158,7 @@ export default function CardSettings({ props }) {
                       })
                     }
                     blurInputOnSelect={false} //set by default, but to be sure
-                    options={status}
+                    options={datakelas}
                     type="text"
                     id="kelas"
                     name="kelas"

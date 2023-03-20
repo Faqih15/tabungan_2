@@ -1,0 +1,64 @@
+{
+  "datakelas": [
+    {
+      "value": "Aliyah 1",
+      "label": "Aliyah 1",
+      "kode": ""
+    },
+    {
+      "value": "Aliyah 2",
+      "label": "Aliyah 2",
+      "kode": ""
+    },
+    {
+      "value": "Aliyah 3",
+      "label": "Aliyah 3",
+      "kode": ""
+    },
+    {
+      "value": "Mu'allimin 1",
+      "label": "Mu'allimin 1",
+      "kode": ""
+    },
+    {
+      "value": "Mu'allimin 2",
+      "label": "Mu'allimin 2",
+      "kode": ""
+    },
+    {
+      "value": "Mu'allimin 3",
+      "label": "Mu'allimin 3",
+      "kode": ""
+    },
+    {
+      "value": "Ahlu Kitabah",
+      "label": "Ahlu Kitabah",
+      "kode": ""
+    },
+    {
+      "value": "Munaqasyah",
+      "label": "Munaqasyah",
+      "kode": ""
+    },
+    {
+      "value": "Selesai Munaq",
+      "label": "Selesai Munaq",
+      "kode": ""
+    },
+    {
+      "value": "Takhasus 1",
+      "label": "Takhasus 1",
+      "kode": ""
+    },
+    {
+      "value": "Takhasus 2",
+      "label": "Takhasus 2",
+      "kode": ""
+    },
+    {
+      "value": "Takhasus 3",
+      "label": "Takhasus 3",
+      "kode": ""
+    }
+  ]
+ }

@@ -9,7 +9,7 @@ export default function handler(req, res) {
     const body = JSON.parse(req.body);
     switch (requestMethod) {
       case 'POST':
-        console.log(body)
+        console.log(body, "body body body body body body body body body body ")
         createSantriProfile(body)
         res.status(200).json({ message: 'berhasil new santri'})
       // handle other HTTP methods

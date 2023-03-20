@@ -1,23 +1,14 @@
 import excuteQuery from "./db";
 
-export async function delSantri() {
+export async function delSantri(id) {
   try {
-    const result = await excuteQuery({
-      query: "DELETE FROM santri_new WHERE id = ?",
-      params: [santriId],
-    });
-    
-
-    const users = results.map((result) => {
-      return {
-        nama: result.nama,
-        nim: result.nim,
-        orangtua: result.orangtua,
-        kelas: result.kelas,
-      };
-    });
-
-    return users;
+    if (id) {
+      console.log(id);
+      const result = await excuteQuery({
+        query: `DELETE FROM santri_new WHERE id = ${id}`,
+      });
+      return result;
+    }
   } catch (error) {
     console.log(error);
     return [];
