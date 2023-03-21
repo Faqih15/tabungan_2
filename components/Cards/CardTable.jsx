@@ -176,7 +176,7 @@ export default function CardTable({ color }) {
                       <Link
                         href={{
                           pathname: "/admin/edit-santri",
-                          query: santri,
+                          query: santri.id,
                         }}
                         class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
                       >

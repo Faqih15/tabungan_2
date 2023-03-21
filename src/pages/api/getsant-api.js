@@ -1,11 +1,13 @@
-import { mapSantri } from "@lib/map-santri-lib";
+import { getSantri } from "@lib/getsant-lib";
 
-export default async function mapdatasantri(req, res) {
+export default async function getsant(req, res) {
   if (req.method === "GET") {
+    const id = req.body;
+    console.log(id, "const id = req.body");
     try {
-      const users = await mapSantri();
-      // res.status(200).json({ message: 'Tampilkan santri', data: users });
+      const users = await getSantri();
       res.status(200).json(users);
+      console.log(req, "req req req req req req");
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Internal server error' });
@@ -14,4 +16,3 @@ export default async function mapdatasantri(req, res) {
     res.status(400).json({ message: 'Invalid request method' });
   }
 }
-

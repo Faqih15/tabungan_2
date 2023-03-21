@@ -1,5 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import { createUser } from "@lib/create-admin-lib";
 
 export default function handler(req, res) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { datakelas } from "./DataKelas";
 import CardTable from "./CardTable";
@@ -36,23 +36,31 @@ const menuStyle = {
   }),
 };
 
-export default function CardEditSantri(santriPerID) {
-  const [datapertama, setdatapertama] = useState({
+export default function CardEditSantri(id) {
+  const router = useRouter();
+  const ss = router.query;
+  // console.log(ss, "ss ss ss ss ss ss ss ss ss ");
+  const [firstData, setfirstData] = useState([]);
+  // const spi = `${santriPerID}`
+
+  useEffect(() => {
+    fetch(`/api/getsant-api/${id}`)
+      .then((res) => res.json())
+      .then((data) => setfirstData(data));
+      console.log(id, "id dlm useEffect");
+  }, [id]);
+  const [dataEdit, setDataEdit] = useState({
     nama: "",
     nim: "",
     orangtua: "",
     kelas: "",
-    password: "",
   });
 
-  const mendaftar = (e) => {
-    setdatapertama({ ...datapertama, [e.target.name]: e.target.value });
-    console.log(e.target.value, "e.target.value");
-  };
+  const edit = (e) => {};
 
-  const newSantri = (e) => {
+  const saveEdit = (e) => {
     e.preventDefault();
-    const newsantri = async () => {
+    const editsantri = async () => {
       const data = {
         nama: datapertama.nama,
         nim: datapertama.nim,
@@ -60,24 +68,22 @@ export default function CardEditSantri(santriPerID) {
         kelas: datapertama.kelas,
         password: datapertama.password,
       };
-      console.log(data, "data 115");
+      // console.log(data, "data 115");
 
-      const kirim = await fetch("/api/new-santri-api", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
-      console.log(kirim, "kirim");
-      return kirim.json();
+      // const kirim = await fetch("/api/new-santri-api", {
+      //   method: "POST",
+      //   body: JSON.stringify(data),
+      // });
+      // console.log(kirim, "kirim");
+      // return kirim.json();
     };
-    newsantri();
+    editsantri();
     e.target.reset();
   };
+
   const tampilkanprops = () => {
-    console.log(santriPerID, "santriPerID");
+    console.log(firstData, "firstData firstData firstData firstData");
   };
-  const router = useRouter();
-  const ss = router.query;
-  console.log(ss, "santriPerID");
   // console.log(ss.name, "ss.name");
 
   return (
@@ -85,7 +91,7 @@ export default function CardEditSantri(santriPerID) {
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
         {/* <section className="rounded-t mb-0 px-6 py-6"></section> */}
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form onSubmit={newSantri}>
+          <form onSubmit={saveEdit}>
             <h6 className="text-black text-sm mt-8 mb-10 font-bold uppercase">
               Edit Santri by Index
             </h6>
@@ -100,7 +106,7 @@ export default function CardEditSantri(santriPerID) {
                   </label>
                   <input
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    onChange={mendaftar}
+                    onChange={edit}
                     type="text"
                     value={ss.nama}
                     id="nama"
@@ -120,7 +126,7 @@ export default function CardEditSantri(santriPerID) {
                     Nomor Induk
                   </label>
                   <input
-                    onChange={mendaftar}
+                    onChange={edit}
                     type="number"
                     value={ss.nim}
                     id="nim"
@@ -143,7 +149,7 @@ export default function CardEditSantri(santriPerID) {
                     Orang Tua
                   </label>
                   <input
-                    onChange={mendaftar}
+                    onChange={edit}
                     type="text"
                     value={ss.orangtua}
                     id="orangtua"
@@ -165,7 +171,7 @@ export default function CardEditSantri(santriPerID) {
                   </label>
                   <Select
                     onChange={(e) =>
-                      mendaftar({
+                      edit({
                         target: { value: e.value, name: "kelas" },
                       })
                     }

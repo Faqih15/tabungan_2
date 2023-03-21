@@ -1,4 +1,3 @@
-// import { useRouter } from "next/router";
 import React, { useMemo, useState } from "react";
 import Home from "./home";
 import Login from "./loginAdm";
