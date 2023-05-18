@@ -8,10 +8,10 @@ export default function handler(req, res) {
       case 'POST':
         console.log(body)
         createUser(body)
-        res.status(200).json({ message: 'create user success'})
+        res.status(200).json({ message: 'create admin success'})
       // handle other HTTP methods
       default:
-        res.status(200).json({ message: 'Create user API'})
+        res.status(200).json({ message: 'Create admin API'})
     }
   }
 }

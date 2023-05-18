@@ -14,7 +14,7 @@ function Administrator() {
         method: "POST",
         body: JSON.stringify(data),
       });
-      console.log(response, "response");
+      console.log(response, data , "response");
       return response.json();
     };
     postData().then((data) => {
