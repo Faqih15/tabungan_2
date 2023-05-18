@@ -5,7 +5,7 @@ export async function delSantri(id) {
     if (id) {
       console.log(id);
       const result = await excuteQuery({
-        query: `DELETE FROM santri_new WHERE id = ${id}`,
+        query: `DELETE FROM santri_list WHERE id = ${id}`,
       });
       return result;
     }

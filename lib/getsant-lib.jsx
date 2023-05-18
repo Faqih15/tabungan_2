@@ -3,8 +3,8 @@ import excuteQuery from "./db";
 export async function getSantri(id) {
   try {
     const results = await excuteQuery({
-      query: `SELECT * FROM santri_new`,
-      // query: `SELECT * FROM santri_new  WHERE id = ${id}`,
+      query: `SELECT * FROM santri_list`,
+      // query: `SELECT * FROM santri_list  WHERE id = ${id}`,
     });
 
     const users = results.map((result) => {

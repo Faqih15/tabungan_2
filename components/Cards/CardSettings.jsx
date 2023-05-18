@@ -45,7 +45,7 @@ export default function CardSettings({ props }) {
 
   const mendaftar = (e) => {
     setdatapertama({ ...datapertama, [e.target.name]: e.target.value });
-    console.log(e.target.value, "e.target.value");
+    // console.log(e.target.value, "e.target.value");
   };
 
   const newSantri = (e) => {
@@ -58,16 +58,18 @@ export default function CardSettings({ props }) {
         kelas: datapertama.kelas,
         password: datapertama.password,
       };
-      console.log(data, "data 115");
-
-      const kirim = await fetch("/api/new-santri-api", {
+      
+      const response = await fetch("/api/new-santri-api", {
         method: "POST",
         body: JSON.stringify(data),
       });
-      console.log(kirim, "kirim");
-      return kirim.json();
+      
+      console.log(data, "data 115");
+      return response.json();
     };
-    newsantri();
+    newsantri().then((data) => {
+      console.log(data, "data.message");
+    });
     e.target.reset();
   };
 

@@ -9,11 +9,11 @@ module.exports = nextConfig;
 
 module.exports = {
   env: {
-    MYSQL_HOST: "127.0.0.1",
-    MYSQL_PORT: "3306",
-    MYSQL_DATABASE: "test tabungan",
-    MYSQL_USER: "root",
-    MYSQL_PASSWORD: "admin",
+    MYSQL_HOST: "localhost",
+    MYSQL_PORT: 3306,
+    MYSQL_DATABASE: "my_tabungan_1",
+    MYSQL_USER: "jahid",
+    MYSQL_PASSWORD: "password",
   },
 };
 

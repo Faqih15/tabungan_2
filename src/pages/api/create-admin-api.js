@@ -1,6 +1,7 @@
 import { createUser } from "@lib/create-admin-lib";
 
 export default function handler(req, res) {
+  console.log(req, res, "req res");
   if (req.method === "POST") {
     const requestMethod = req.method;
     const body = JSON.parse(req.body);

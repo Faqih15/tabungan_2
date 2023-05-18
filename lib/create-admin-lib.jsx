@@ -15,14 +15,12 @@ export async function createUser({email, password}) {
     hash,
     salt,
   };
-
   try {
     console.log(user, "user");
     const result = await excuteQuery({
       query:
-        "INSERT INTO admin_create (createdAt, email, hash, salt) VALUES(?, ?, ?, ?)",
+        "INSERT INTO admin_list (createdAt, email, hash, salt) VALUES(?, ?, ?, ?)",
       values: [
-        user.id,
         user.createdAt.toString(),
         user.email,
         user.hash,

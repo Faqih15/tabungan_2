@@ -11,7 +11,7 @@ export default function CardTable({ color }) {
   }, []);
 
   const onHapus = async (e, santri_id, idxx) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log(e, "e");
     console.log(santri_id, "santri");
     return await fetch("/api/del-sant-api", {

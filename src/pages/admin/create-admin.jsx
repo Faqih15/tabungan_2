@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import Admin from "layouts/layoutAdmin";
 function Administrator() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
   const addAdmin = (e) => {
     e.preventDefault();
     const postData = async () => {
+      //isi data
       const data = {
         email: email,
         password: password,
       };
+      //kirim data
       const response = await fetch("/api/create-admin-api", {
         method: "POST",
         body: JSON.stringify(data),
       });
-      console.log(response, data , "response");
+      // console.log(response, data , "response");
       return response.json();
     };
     postData().then((data) => {
@@ -22,6 +26,7 @@ function Administrator() {
     });
     e.target.reset();
   };
+  
   function myFunction() {
     var x = document.getElementById("password");
     if (x.type === "password") {

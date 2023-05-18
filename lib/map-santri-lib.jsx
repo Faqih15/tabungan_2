@@ -3,7 +3,7 @@ import excuteQuery from "./db";
 export async function mapSantri() {
   try {
     const results = await excuteQuery({
-      query: "SELECT * FROM santri_new",
+      query: "SELECT * FROM santri_list",
     });
 
     const users = results.map((result) => {
