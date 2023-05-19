@@ -2,9 +2,11 @@ import CardEditSantri from "@components/Cards/CardEditSantri";
 import Admin from "layouts/layoutAdmin.jsx";
 import { useRouter } from "next/router";
 
-function EditSantri() {
+function EditSantri({id}) {
+  // console.log(id, "santri.id");
   const router = useRouter();
   const santriPerID = router.query;
+  console.log(santriPerID, "santriPerID");
   return (
     <>
       <Admin>

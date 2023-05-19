@@ -7,7 +7,8 @@ export default function Home() {
    <div className="">
       <>
         <Admin >
-        <div className="flex flex-wrap mt-4 relative md:ml-32 md:mr-10">
+        {/* size kotak tabel */}
+        <div className="flex flex-wrap mt-4 relative md:ml-5 md:mr-10">
           <div className="w-full mb-12 ">
             <CardTable />
           </div>

@@ -40,6 +40,11 @@ export default function CardEditSantri(id) {
   const router = useRouter();
   const ss = router.query;
   // console.log(ss, "ss ss ss ss ss ss ss ss ss ");
+  // console.log(id, "id");
+  // console.log(ss.nama, "ss.nama");
+  // console.log(ss.nim, "ss.nim");
+  // console.log(ss.orangtua, "ss.orangtua");
+  // console.log(ss.kelas, "ss.kelas");
   const [firstData, setfirstData] = useState([]);
   // const spi = `${santriPerID}`
 
@@ -47,7 +52,7 @@ export default function CardEditSantri(id) {
     fetch(`/api/getsant-api/${id}`)
       .then((res) => res.json())
       .then((data) => setfirstData(data));
-      console.log(id, "id dlm useEffect");
+      // console.log(id, "id id id dlm useEffect");
   }, [id]);
   const [dataEdit, setDataEdit] = useState({
     nama: "",

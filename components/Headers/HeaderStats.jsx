@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardStats from "components/Cards/CardStats";
 
 export default function HeaderStats() {
+  const [listSantri, setlistSantri] = useState([]);
+  useEffect(() => {
+    fetch("/api/map-santri-api")
+      .then((res) => res.json())
+      .then((data) => setlistSantri(data));
+  }, []);
+
+  const jumlahSantri = listSantri.length;
+  // console.log(jumlahSantri, "jumlah santri");
+
   return (
     <>
       {/* Header */}
@@ -13,7 +23,7 @@ export default function HeaderStats() {
               <div className="w-full lg:w-4/12 xl:w-3/12 px-4">
                 <CardStats
                   statSubtitle="Total User"
-                  statTitle="447"
+                  statTitle={jumlahSantri}
                   statArrow="up"
                   statPercent="3.48"
                   statPercentColor="text-emerald-500"
