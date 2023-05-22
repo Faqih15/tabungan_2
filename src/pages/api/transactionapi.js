@@ -1,4 +1,4 @@
-import { createUser } from "@lib/create-admin-lib";
+import { createUser } from "@lib/admin/create-admin-lib";
 
 export default function handler(req, res) {
   if (req.method === "POST") {

@@ -59,7 +59,7 @@ export default function CardSettings({ props }) {
         password: datapertama.password,
       };
       
-      const response = await fetch("/api/new-santri-api", {
+      const response = await fetch("/api/santri/new-santri-api", {
         method: "POST",
         body: JSON.stringify(data),
       });

@@ -23,7 +23,7 @@ export default function Sidebar() {
 
           <Link
             //   href="/"
-            href="/"
+            href="/admin/santri/home"
             className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
           >
             KOPERASI MAHAD
@@ -86,41 +86,22 @@ export default function Sidebar() {
             {/* Navigation */}
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
-              <li className="items-center">
+              <li className="items-center hover:bg-gray-200">
                 <Link
                   //   href="/"
                   href="/admin/loginAdm"
-                  className={
-                    "text-xs uppercase py-3 font-bold block "
-                    //   +
-                    //   (router.pathname.indexOf("/admin/maps") !== -1
-                    //     ? "text-lightBlue-500 hover:text-lightBlue-600"
-                    //     : "text-blueGray-700 hover:text-blueGray-500")
-                  }
+                  className={"text-xs uppercase py-3 font-bold block "}
                 >
-                  <i
-                    className={
-                      "fas fa-map-marked mr-2 text-sm "
-                      // +
-                      // (router.pathname.indexOf("/admin/maps") !== -1
-                      //   ? "opacity-75"
-                      //   : "text-blueGray-300")
-                    }
-                  ></i>{" "}
-                  Login Admin
+                  <i className={"fas fa-map-marked mr-2 text-sm "}></i> Login
+                  Admin
                 </Link>
               </li>
-              <li className="items-center">
+
+              <li className="items-center hover:bg-gray-200">
                 <Link
                   //   href="/"
-                  href="/admin/home"
-                  className={
-                    "text-xs uppercase py-3 font-bold block "
-                    //   +
-                    //   (router.pathname.indexOf("/admin/dashboard") !== -1
-                    //     ? "text-lightBlue-500 hover:text-lightBlue-600"
-                    //     : "text-blueGray-700 hover:text-blueGray-500")
-                  }
+                  href="/admin/santri/home"
+                  className={"text-xs uppercase py-3 font-bold block "}
                 >
                   <i
                     className={
@@ -135,53 +116,22 @@ export default function Sidebar() {
                 </Link>
               </li>
 
-              <li className="items-center">
+              <li className="items-center hover:bg-gray-200">
                 <Link
                   //   href="/"
-                  href="/admin/new-santri"
-                  className={
-                    "text-xs uppercase py-3 font-bold block "
-                    //   +
-                    //   (router.pathname.indexOf("/admin/settings") !== -1
-                    //     ? "text-lightBlue-500 hover:text-lightBlue-600"
-                    //     : "text-blueGray-700 hover:text-blueGray-500")
-                  }
+                  href="/admin/santri/new-santri"
+                  className={"text-xs uppercase py-3 font-bold block "}
                 >
-                  <i
-                    className={
-                      "fas fa-tools mr-2 text-sm "
-                      // +
-                      // (router.pathname.indexOf("/admin/settings") !== -1
-                      //   ? "opacity-75"
-                      //   : "text-blueGray-300")
-                    }
-                  ></i>{" "}
-                  New Santri
+                  <i className={"fas fa-tools mr-2 text-sm "}></i> New Santri
                 </Link>
               </li>
 
-              <li className="items-center">
+              <li className="items-center hover:bg-gray-200">
                 <Link
-                  //   href="/"
-                  href="/admin/create-admin"
-                  className={
-                    "text-xs uppercase py-3 font-bold block "
-                    //    +
-                    //   (router.pathname.indexOf("/admin/tables") !== -1
-                    //     ? "text-lightBlue-500 hover:text-lightBlue-600"
-                    //     : "text-blueGray-700 hover:text-blueGray-500")
-                  }
+                  href="/admin/admin/create-admin"
+                  className={"text-xs uppercase py-3 font-bold block "}
                 >
-                  <i
-                    className={
-                      "fas fa-table mr-2 text-sm "
-                      // +
-                      // (router.pathname.indexOf("/admin/tables") !== -1
-                      //   ? "opacity-75"
-                      //   : "text-blueGray-300")
-                    }
-                  ></i>{" "}
-                  Tambah Admin
+                  <i className={"fas fa-table mr-2 text-sm "}></i> Tambah Admin
                 </Link>
               </li>
             </ul>
@@ -195,22 +145,22 @@ export default function Sidebar() {
             {/* Navigation */}
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <li className="items-center">
+              <li className="items-center hover:bg-gray-200">
                 <Link
                   //   href="/"
                   href="/admin/edit-santri"
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                  className="hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                 >
                   <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
                   Edit Santri
                 </Link>
               </li>
 
-              <li className="items-center">
+              <li className="items-center hover:bg-gray-200">
                 <Link
                   //   href="/"
                   href="#pablo"
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                  className="hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                 >
                   <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
                   Register

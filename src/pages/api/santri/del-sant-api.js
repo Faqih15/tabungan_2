@@ -1,4 +1,4 @@
-import { delSantri } from "@lib/del-sant-lib";
+import { delSantri } from "@lib/santri/del-sant-lib";
 
 export default function handler(req, res) {
   if (req.method === "DELETE") {

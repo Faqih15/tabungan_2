@@ -36,61 +36,60 @@ const menuStyle = {
   }),
 };
 
-export default function CardEditSantri(id) {
-  const router = useRouter();
-  const ss = router.query;
-  // console.log(ss, "ss ss ss ss ss ss ss ss ss ");
-  // console.log(id, "id");
-  // console.log(ss.nama, "ss.nama");
-  // console.log(ss.nim, "ss.nim");
-  // console.log(ss.orangtua, "ss.orangtua");
-  // console.log(ss.kelas, "ss.kelas");
-  const [firstData, setfirstData] = useState([]);
-  // const spi = `${santriPerID}`
+export default function CardEditSantri({ id }) {
+  // const [firstData, setfirstData] = useState([]);
+  // useEffect(() => {
+
+  // }, []);
+
+  const [firstData, setFirstData] = useState('');
 
   useEffect(() => {
-    fetch(`/api/getsant-api/${id}`)
-      .then((res) => res.json())
-      .then((data) => setfirstData(data));
-      // console.log(id, "id id id dlm useEffect");
-  }, [id]);
-  const [dataEdit, setDataEdit] = useState({
-    nama: "",
-    nim: "",
-    orangtua: "",
-    kelas: "",
-  });
-
-  const edit = (e) => {};
-
-  const saveEdit = (e) => {
-    e.preventDefault();
-    const editsantri = async () => {
-      const data = {
-        nama: datapertama.nama,
-        nim: datapertama.nim,
-        orangtua: datapertama.orangtua,
-        kelas: datapertama.kelas,
-        password: datapertama.password,
-      };
-      // console.log(data, "data 115");
-
-      // const kirim = await fetch("/api/new-santri-api", {
-      //   method: "POST",
-      //   body: JSON.stringify(data),
-      // });
-      // console.log(kirim, "kirim");
-      // return kirim.json();
+    const fetchData = async () => {
+      try {
+        setFirstData(id)
+        console.log(firstData,"berhasil");
+       
+      } catch (error) {
+        console.log(error, "error bang error bang error bang error bang");
+        console.log(firstData, "first data dlm 2");
+      }
     };
-    editsantri();
-    e.target.reset();
-  };
 
-  const tampilkanprops = () => {
-    console.log(firstData, "firstData firstData firstData firstData");
-  };
-  // console.log(ss.name, "ss.name");
+    fetchData();
+  }, [id]);
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = async () => fetch(`/api/getsant?paramID=${paramID}`, {
+  //         method: "GET",
+  //         // body: JSON.stringify(data),
+  //       });
+  //       // const data = await response.json();
+  //       console.log(response, "response");
+  //       setFirstData(paramID);
+  //       // setFirstData(paramID);
+  //       console.log(firstData, "first data 57");
+  //     } catch (error) {
+  //       console.log(error, "error bang error bang error bang error bang");
+  //       console.log(firstData, "first data dlm 2");
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [paramID]);
+
+  const router = useRouter();
+  const ss = router.query;
+
+  const edit = (e) => {
+    console.log(firstData, "edit first data");
+  };
+  const saveEdit = (e) => {
+    console.log("saveEdit");
+    console.log(firstData, "edit first data");
+  };
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
@@ -99,6 +98,7 @@ export default function CardEditSantri(id) {
           <form onSubmit={saveEdit}>
             <h6 className="text-black text-sm mt-8 mb-10 font-bold uppercase">
               Edit Santri by Index
+              <p>Parameter ID: {id}</p>
             </h6>
             <div className="flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4">
@@ -113,7 +113,7 @@ export default function CardEditSantri(id) {
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     onChange={edit}
                     type="text"
-                    value={ss.nama}
+                    defaultValue={ss.nama}
                     id="nama"
                     name="nama"
                     placeholder="Edit Nama Santri"
@@ -182,7 +182,7 @@ export default function CardEditSantri(id) {
                     }
                     blurInputOnSelect={false} //set by default, but to be sure
                     options={datakelas}
-                    // value={ss.kelas}
+                    value={ss.kelas}
                     type="text"
                     id="kelas"
                     name="kelas"
@@ -193,7 +193,7 @@ export default function CardEditSantri(id) {
                   />
                 </div>
               </div>
-              <div className="w-full lg:w-6/12 px-4">
+              {/* <div className="w-full lg:w-6/12 px-4">
                 <div className="relative w-full mb-3">
                   <label
                     className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -212,19 +212,13 @@ export default function CardEditSantri(id) {
                     required
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
             <button
               type="submit"
               className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75 uppercase"
             >
               save editing
-            </button>
-            <button
-              onClick={tampilkanprops}
-              className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75"
-            >
-              tampil dong
             </button>
 
             <hr className="mt-6 border-b-1 border-blueGray-300 pb-2" />

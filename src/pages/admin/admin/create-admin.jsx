@@ -14,7 +14,7 @@ function Administrator() {
         password: password,
       };
       //kirim data
-      const response = await fetch("/api/create-admin-api", {
+      const response = await fetch("/api/admin/create-admin-api", {
         method: "POST",
         body: JSON.stringify(data),
       });

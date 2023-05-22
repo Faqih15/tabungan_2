@@ -1,4 +1,4 @@
-import excuteQuery from "./db";
+import excuteQuery from "../db";
 
 export async function delSantri(id) {
   try {

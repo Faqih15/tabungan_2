@@ -1,4 +1,4 @@
-import { newSantri } from "@lib/new-santri-lib";
+import { newSantri } from "@lib/santri/new-santri-lib";
 
 export default function handler(req, res) {
   console.log(req, res, "req res");

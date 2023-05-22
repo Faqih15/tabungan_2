@@ -1,32 +1,21 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import CardEditSantri from "./CardEditSantri";
 
 export default function CardTable({ color }) {
   const [listSantri, setlistSantri] = useState([]);
   useEffect(() => {
-    fetch("/api/map-santri-api")
+    fetch("/api/santri/map-santri-api")
       .then((res) => res.json())
       .then((data) => setlistSantri(data));
   }, []);
-
-  // const onHapus = async (e, santri_id, idxx) => {
-  //   // e.preventDefault();
-  //   console.log(e, "e");
-  //   console.log(santri_id, "santri");
-  //   return await fetch("/api/del-sant-api", {
-  //     method: "delete",
-  //     body: santri_id,
-  //   }).then((response) => response.json());
-  // };
 
   const onHapus = async (e, santri_id, idxx) => {
     e.preventDefault();
     console.log(e, "e");
     console.log(santri_id, "santri");
-  
-    await fetch("/api/del-sant-api", {
+
+    await fetch("/api/santri/del-sant-api", {
       method: "DELETE",
       body: santri_id, // assuming you need to send the 'santri_id' as JSON data
       headers: {
@@ -37,9 +26,11 @@ export default function CardTable({ color }) {
       .then((data) => {
         // Perform the necessary operations with the response data
         console.log(data); // Log the response data to the console
-  
+
         // Update the listSantri state after successful deletion
-        setlistSantri((prevList) => prevList.filter((item) => item.id !== santri_id));
+        setlistSantri((prevList) =>
+          prevList.filter((item) => item.id !== santri_id)
+        );
       })
       .catch((error) => {
         console.log(error); // Log any error that occurred during the fetch request
@@ -153,11 +144,25 @@ export default function CardTable({ color }) {
                 </th>
               </tr>
             </thead>
-            
+
             <tbody className="py-5">
               {listSantri.map((santri, idxx) => {
                 return (
                   <tr key={santri.id} className="bg-slate-300">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                      <Link
+                        href={{
+                          pathname: `/admin/santri/edit/${santri.id}`
+                        }}
+                        // href={{
+                        //   pathname: "/admin/santri/edit/[id].jsx",
+                        //   query: "agus",
+                        // }}
+                        class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
+                      >
+                        <span>Edit Santri</span>
+                      </Link>
+                    </td>
                     <th>
                       <input
                         id="index"
@@ -199,17 +204,7 @@ export default function CardTable({ color }) {
                         Hapus
                       </button>
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
-                      <Link
-                        href={{
-                          pathname: "/admin/edit-santri",
-                          query: santri,
-                        }}
-                        class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
-                      >
-                        <span>Edit Santri</span>
-                      </Link>
-                    </td>
+
                     {/* <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       <div className="flex items-center">
                         <span className="mr-2">{santri.createdAt}</span>
