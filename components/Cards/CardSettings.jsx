@@ -48,7 +48,7 @@ export default function CardSettings({ props }) {
     // console.log(e.target.value, "e.target.value");
   };
 
-  const newSantri = (e) => {
+  const daftar = (e) => {
     e.preventDefault();
     const newsantri = async () => {
       const data = {
@@ -78,7 +78,7 @@ export default function CardSettings({ props }) {
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
         <section className="rounded-t mb-0 px-6 py-6"></section>
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form onSubmit={newSantri}>
+          <form onSubmit={daftar}>
             <h6 className="text-black text-sm mb-10 font-bold uppercase">
               User Information
             </h6>

@@ -37,58 +37,44 @@ const menuStyle = {
 };
 
 export default function CardEditSantri({ id }) {
-  // const [firstData, setfirstData] = useState([]);
-  // useEffect(() => {
-
-  // }, []);
-
-  const [firstData, setFirstData] = useState('');
-
+  const [firstData, setFirstData] = useState("");
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchData() {
       try {
-        setFirstData(id)
-        console.log(firstData,"berhasil");
-       
+        // Simulating an asynchronous API call
+        const response = await fetch(`/api/santri/edit/${id}`);
+        const data = await response.json();
+        // Update the firstData state with the received data
+        setFirstData(data);
+        // console.log(data, "data");
+        console.log(firstData, "firstData 52");
       } catch (error) {
-        console.log(error, "error bang error bang error bang error bang");
-        console.log(firstData, "first data dlm 2");
+        // Handle any errors that occur during the API call
+        console.error("Error fetching data:", error);
       }
-    };
-
+    }
     fetchData();
   }, [id]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = async () => fetch(`/api/getsant?paramID=${paramID}`, {
-  //         method: "GET",
-  //         // body: JSON.stringify(data),
-  //       });
-  //       // const data = await response.json();
-  //       console.log(response, "response");
-  //       setFirstData(paramID);
-  //       // setFirstData(paramID);
-  //       console.log(firstData, "first data 57");
-  //     } catch (error) {
-  //       console.log(error, "error bang error bang error bang error bang");
-  //       console.log(firstData, "first data dlm 2");
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [paramID]);
-
-  const router = useRouter();
-  const ss = router.query;
+  // const [first, setfirst] = useState([{ nama: "agus", no: 32015 }]);
+  // console.log(first[0].nama, "42 42 42 42 42 ");
+  // console.log(firstData, "firstData 61");
+  // const router = useRouter();
+  // const ss = router.query;
+  const [dataEdit, setDataEdit] = useState({
+    nama: "",
+    nim: "",
+    orangtua: "",
+    kelas: "",
+  });
 
   const edit = (e) => {
-    console.log(firstData, "edit first data");
+    setDataEdit({ ...dataEdit, [e.target.name]: e.target.value });
+    console.log(e.target.value, "e.target.value");
   };
   const saveEdit = (e) => {
-    console.log("saveEdit");
-    console.log(firstData, "edit first data");
+    e.preventDefault();
+    // console.log("saveEdit");
+    // console.log(firstData, "edit first data");
   };
   return (
     <>
@@ -107,16 +93,14 @@ export default function CardEditSantri({ id }) {
                     className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                     htmlFor="grid-password"
                   >
-                    Nama Santri
+                    Nama Murid
                   </label>
                   <input
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     onChange={edit}
                     type="text"
-                    defaultValue={ss.nama}
-                    id="nama"
+                    defaultValue={firstData.nama}
                     name="nama"
-                    placeholder="Edit Nama Santri"
                     autoComplete="off"
                     required
                   />
@@ -133,13 +117,11 @@ export default function CardEditSantri({ id }) {
                   <input
                     onChange={edit}
                     type="number"
-                    value={ss.nim}
-                    id="nim"
+                    defaultValue={firstData.nim}
                     name="nim"
                     min="30001"
                     max="39099"
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Edit NIM Santri"
                     autoComplete="off"
                     required
                   />
@@ -156,11 +138,10 @@ export default function CardEditSantri({ id }) {
                   <input
                     onChange={edit}
                     type="text"
-                    value={ss.orangtua}
+                    defaultValue={firstData.orangtua}
                     id="orangtua"
                     name="orangtua"
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Edit Nama Orang Tua"
                     autoComplete="off"
                     required
                   />
@@ -182,7 +163,7 @@ export default function CardEditSantri({ id }) {
                     }
                     blurInputOnSelect={false} //set by default, but to be sure
                     options={datakelas}
-                    value={ss.kelas}
+                    defaultValue={firstData.kelas}
                     type="text"
                     id="kelas"
                     name="kelas"

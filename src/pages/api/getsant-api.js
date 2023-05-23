@@ -18,13 +18,13 @@ import { getSantri } from "@lib/getsant-lib";
 // }
 export default async function getsant(req, res) {
   if (req.method === "GET") {
-    console.log(req, "req");
-    console.log(res, "res");
+    // console.log(req, "req method");
+    // console.log(res, "res id");
     const { paramID } = req.query;
     console.log(paramID, "paramID");
 
     try {
-      const users = await getSantri(paramID);
+      // const users = await getSantri(paramID.id);
       res.status(200).json(users);
     } catch (error) {
       console.log(error);

@@ -9,7 +9,7 @@ export default function Admin({ children }) {
     <>
       <Sidebar />
       <div
-        className="relative md:ml-64 bg-gray-200 h-screen"
+        className="relative md:ml-64 bg-gray-200 h-full"
         style={{
           backgroundImage: "url('/img/register_bg_2.png')",
         }}
