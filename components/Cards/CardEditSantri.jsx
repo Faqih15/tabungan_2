@@ -38,50 +38,47 @@ const menuStyle = {
 
 export default function CardEditSantri({ id }) {
   const [firstData, setFirstData] = useState("");
+
   useEffect(() => {
     async function fetchData() {
       try {
-        // Simulating an asynchronous API call
         const response = await fetch(`/api/santri/edit/${id}`);
         const data = await response.json();
-        // Update the firstData state with the received data
         setFirstData(data);
-        // console.log(data, "data");
         console.log(firstData, "firstData 52");
       } catch (error) {
-        // Handle any errors that occur during the API call
         console.error("Error fetching data:", error);
       }
     }
     fetchData();
   }, [id]);
-  // const [first, setfirst] = useState([{ nama: "agus", no: 32015 }]);
-  // console.log(first[0].nama, "42 42 42 42 42 ");
-  // console.log(firstData, "firstData 61");
-  // const router = useRouter();
-  // const ss = router.query;
   const [dataEdit, setDataEdit] = useState({
     nama: "",
     nim: "",
     orangtua: "",
     kelas: "",
   });
-
   const edit = (e) => {
     setDataEdit({ ...dataEdit, [e.target.name]: e.target.value });
     console.log(e.target.value, "e.target.value");
   };
-  const saveEdit = (e) => {
+  const saveEdit = async (e, update) => {
     e.preventDefault();
-    // console.log("saveEdit");
-    // console.log(firstData, "edit first data");
+    console.log(update, "saveEdit id param", id);
+    const hasil = await fetch(`api/santri/updet/[update]`, {
+      method: "PUT",
+      body: JSON.stringify(dataEdit),
+      headers: dataEdit,
+    });
+    console.log(hasil.url, "hasil");
+    // const newData = await hasil.json();
   };
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
         {/* <section className="rounded-t mb-0 px-6 py-6"></section> */}
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form onSubmit={saveEdit}>
+          <form onSubmit={(e) => saveEdit(e, id)}>
             <h6 className="text-black text-sm mt-8 mb-10 font-bold uppercase">
               Edit Santri by Index
               <p>Parameter ID: {id}</p>

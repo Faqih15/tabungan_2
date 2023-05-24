@@ -47,7 +47,6 @@ export default function CardSettings({ props }) {
     setdatapertama({ ...datapertama, [e.target.name]: e.target.value });
     // console.log(e.target.value, "e.target.value");
   };
-
   const daftar = (e) => {
     e.preventDefault();
     const newsantri = async () => {

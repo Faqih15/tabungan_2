@@ -12,8 +12,6 @@ export default function CardTable({ color }) {
 
   const onHapus = async (e, santri_id, idxx) => {
     e.preventDefault();
-    console.log(e, "e");
-    console.log(santri_id, "santri");
 
     await fetch("/api/santri/del-sant-api", {
       method: "DELETE",
@@ -154,10 +152,6 @@ export default function CardTable({ color }) {
                         href={{
                           pathname: `/admin/santri/edit/${santri.id}`
                         }}
-                        // href={{
-                        //   pathname: "/admin/santri/edit/[id].jsx",
-                        //   query: "agus",
-                        // }}
                         class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
                       >
                         <span>Edit Santri</span>

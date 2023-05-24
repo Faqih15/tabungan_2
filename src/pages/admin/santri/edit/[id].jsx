@@ -16,7 +16,7 @@ export function EditSantri() {
   return (
     <>
       <Admin>
-        <div className="text-2xl font-bold">NAMA : {id}</div>
+        {/* <div className="text-2xl font-bold">NAMA : {id}</div> */}
         <div className="flex flex-wrap mt-4 relative lg:ml-32">
           <div className="w-full lg:w-8/12">
             <CardEditSantri id={id} />
