@@ -1,6 +1,6 @@
-import { updateSantri } from "@lib/santri/edit/update-lib";
+import { getSantri } from "@lib/santri/updet/updet-lib";
 
-export default async function getsant(req, res) {
+export default async function updateSantri(req, res) {
   if (req.method === "PUT") {
     console.log(req.method, "req.method");
     console.log(req.body, "req.body");
@@ -9,18 +9,26 @@ export default async function getsant(req, res) {
     console.log(update, "up=req.query");
 
     try {
-      // const respon = await updateSantri(update);
+      const respon = await getSantri(update);
       // res.status(200).json(respon);
       console.log("try berhasil");
+      console.log("====================================");
+      console.log("Test");
+      console.log("====================================");
     } catch (error) {
       console.log(error);
       console.log("catch error");
-
       res.status(500).json({ message: "berhasil update" });
+      console.log("====================================");
+      console.log("Test");
+      console.log("====================================");
     }
   } else {
     res.status(400).json({ message: "gagal update santri coy" });
     console.log("else error");
+    console.log("====================================");
+    console.log("Test");
+    console.log("====================================");
   }
 }
 // export default function handler(req, res) {

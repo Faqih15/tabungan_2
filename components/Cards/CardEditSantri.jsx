@@ -42,16 +42,17 @@ export default function CardEditSantri({ id }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`/api/santri/edit/${id}`);
+        const response = await fetch(`/api/santri/getid/${id}`);
         const data = await response.json();
         setFirstData(data);
-        console.log(firstData, "firstData 52");
+        // console.log(firstData, "firstData 52");
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     }
     fetchData();
   }, [id]);
+
   const [dataEdit, setDataEdit] = useState({
     nama: "",
     nim: "",
@@ -62,15 +63,47 @@ export default function CardEditSantri({ id }) {
     setDataEdit({ ...dataEdit, [e.target.name]: e.target.value });
     console.log(e.target.value, "e.target.value");
   };
-  const saveEdit = async (e, update) => {
+
+  const saveEdit = (e, idx) => {
     e.preventDefault();
-    console.log(update, "saveEdit id param", id);
-    const hasil = await fetch(`api/santri/updet/[update]`, {
-      method: "PUT",
-      body: JSON.stringify(dataEdit),
-      headers: dataEdit,
+    console.log(idx, "idx param id", id);
+    // idx dan id valuenya sama, update diambil dr index nama yg dimunculkan, id diambil pas render
+    const fetchData = async () => {
+      if (idx === id) {
+        try {
+          const hasil = await fetch(`/api/santri/updet/${id}`, {
+            method: "PUT",
+            body: JSON.stringify({
+              userId: idx,
+              title: "hello task",
+              newData: dataEdit,
+            }),
+          });
+          hasil();
+          // const data = await response.json();
+          console.log("save edit berhasil try");
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      } else {
+        console.log("error else kondisi salah");
+      }
+    };
+    fetchData().then((e) => {
+      console.log("log fetch data bawah");
     });
-    console.log(hasil.url, "hasil");
+    console.log("log 95 dibawah fetch");
+
+    // src\pages\api\santri\updet\[update].js
+    // const hasil = await fetch(`api/santri/updet/${update}`, {
+    //   method: "PUT",
+    //   body: JSON.stringify(dataEdit),
+    //   headers: dataEdit,
+    // });
+    // console.log(hasil.url, "hasil");
+    // console.log("====================================");
+    // console.log("Test");
+    // console.log("====================================");
     // const newData = await hasil.json();
   };
   return (
@@ -78,7 +111,13 @@ export default function CardEditSantri({ id }) {
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
         {/* <section className="rounded-t mb-0 px-6 py-6"></section> */}
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form onSubmit={(e) => saveEdit(e, id)}>
+          <form
+            onSubmit={(e) =>
+              saveEdit(e, id).then((data) => {
+                console.log(e, "data.message");
+              })
+            }
+          >
             <h6 className="text-black text-sm mt-8 mb-10 font-bold uppercase">
               Edit Santri by Index
               <p>Parameter ID: {id}</p>

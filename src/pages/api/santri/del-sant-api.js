@@ -7,7 +7,7 @@ export default function handler(req, res) {
     switch (requestMethod) {
       case 'DELETE':
         delSantri(id)
-        res.status(200).json({ message: 'berhasil new santri'})
+        res.status(200).json({ message: 'berhasil del santri'})
       default:
         res.status(200).json({ message: 'Create user API'})
     }

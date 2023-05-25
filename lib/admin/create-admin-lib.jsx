@@ -1,6 +1,6 @@
 import crypto from "crypto";
 // import { v4 as uuidv4 } from "uuid";
-import excuteQuery from "../db";
+import excuteQuery from "../db-library-index";
 import moment from "moment";
 
 export async function createUser({email, password}) {
