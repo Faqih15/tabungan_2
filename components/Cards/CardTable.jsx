@@ -77,6 +77,16 @@ export default function CardTable({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
+                  Edit Profil
+                </th>
+                <th
+                  className={
+                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                  }
+                >
                   Check
                 </th>
                 <th
@@ -130,16 +140,6 @@ export default function CardTable({ color }) {
                 >
                   Hapus Profil
                 </th>
-                <th
-                  className={
-                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                  }
-                >
-                  Edit Profil
-                </th>
               </tr>
             </thead>
 
@@ -150,7 +150,7 @@ export default function CardTable({ color }) {
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
                       <Link
                         href={{
-                          pathname: `/admin/santri/edit/${santri.id}`
+                          pathname: `/admin/santri/edit/${santri.id}`,
                         }}
                         class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
                       >

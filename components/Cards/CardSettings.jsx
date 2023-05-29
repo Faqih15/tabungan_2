@@ -57,12 +57,10 @@ export default function CardSettings({ props }) {
         kelas: datapertama.kelas,
         password: datapertama.password,
       };
-      
       const response = await fetch("/api/santri/new-santri-api", {
         method: "POST",
         body: JSON.stringify(data),
       });
-      
       console.log(data, "data 115");
       return response.json();
     };
@@ -93,6 +91,7 @@ export default function CardSettings({ props }) {
                   <input
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     onChange={mendaftar}
+                    // onInput={(e) => e.target.value = ("" + e.target.value).toUpperCase()}
                     type="text"
                     id="nama"
                     name="nama"
@@ -134,6 +133,7 @@ export default function CardSettings({ props }) {
                   </label>
                   <input
                     onChange={mendaftar}
+                    
                     type="text"
                     id="orangtua"
                     name="orangtua"

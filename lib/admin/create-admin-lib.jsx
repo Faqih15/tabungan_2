@@ -3,7 +3,7 @@ import crypto from "crypto";
 import excuteQuery from "../db-library-index";
 import moment from "moment";
 
-export async function createUser({email, password}) {
+export async function createUser({ email, password }) {
   console.log("lib/user.jsx");
   const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto
@@ -20,12 +20,7 @@ export async function createUser({email, password}) {
     const result = await excuteQuery({
       query:
         "INSERT INTO admin_list (createdAt, email, hash, salt) VALUES(?, ?, ?, ?)",
-      values: [
-        user.createdAt.toString(),
-        user.email,
-        user.hash,
-        user.salt,
-      ],
+      values: [user.createdAt.toString(), user.email, user.hash, user.salt],
     });
     console.log(result);
   } catch (error) {

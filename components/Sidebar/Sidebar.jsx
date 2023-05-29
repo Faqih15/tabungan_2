@@ -131,7 +131,15 @@ export default function Sidebar() {
                   href="/admin/admin/create-admin"
                   className={"text-xs uppercase py-3 font-bold block "}
                 >
-                  <i className={"fas fa-table mr-2 text-sm "}></i> Tambah Admin
+                  <i className={"fas fa-table mr-2 text-sm "}></i> New Admin
+                </Link>
+              </li>
+              <li className="items-center hover:bg-gray-200">
+                <Link
+                  href="/admin/data-kelas/new-class"
+                  className={"text-xs uppercase py-3 font-bold block "}
+                >
+                  <i className={"fas fa-table mr-2 text-sm "}></i> New Class
                 </Link>
               </li>
             </ul>

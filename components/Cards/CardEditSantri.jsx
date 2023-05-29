@@ -51,7 +51,6 @@ export default function CardEditSantri({ id }) {
   }, [id]);
   console.log(firstData, "firstData 52");
 
-
   // const [firstData, setFirstData] = useState({
   //   nama: "",
   //   nim: "",
@@ -89,6 +88,7 @@ export default function CardEditSantri({ id }) {
     console.log("Test");
     console.log("====================================");
     // const newData = await hasil.json();
+    e.target.reset();
   };
   return (
     <>

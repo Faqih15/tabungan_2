@@ -1,4 +1,3 @@
-// import { getIdSantri } from "@lib/santri/updet/id-lib";
 
 import { getIdSantri } from "@lib/santri/getid/getid-lib";
 
