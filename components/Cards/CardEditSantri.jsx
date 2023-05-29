@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { datakelas } from "./DataKelas";
-import CardTable from "./CardTable";
-import { useRouter } from "next/router";
 
 const menuStyle = {
   menu: (base) => ({
@@ -45,65 +43,51 @@ export default function CardEditSantri({ id }) {
         const response = await fetch(`/api/santri/getid/${id}`);
         const data = await response.json();
         setFirstData(data);
-        // console.log(firstData, "firstData 52");
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     }
     fetchData();
   }, [id]);
+  console.log(firstData, "firstData 52");
 
-  const [dataEdit, setDataEdit] = useState({
-    nama: "",
-    nim: "",
-    orangtua: "",
-    kelas: "",
-  });
+
+  // const [firstData, setFirstData] = useState({
+  //   nama: "",
+  //   nim: "",
+  //   orangtua: "",
+  //   kelas: "",
+  // });
   const edit = (e) => {
-    setDataEdit({ ...dataEdit, [e.target.name]: e.target.value });
+    setFirstData({ ...firstData, [e.target.name]: e.target.value });
     console.log(e.target.value, "e.target.value");
   };
 
   const saveEdit = (e, idx) => {
     e.preventDefault();
-    console.log(idx, "idx param id", id);
+    // console.log(idx, "idx param id", id);
     // idx dan id valuenya sama, update diambil dr index nama yg dimunculkan, id diambil pas render
-    const fetchData = async () => {
-      if (idx === id) {
-        try {
-          const hasil = await fetch(`/api/santri/updet/${id}`, {
-            method: "PUT",
-            body: JSON.stringify({
-              userId: idx,
-              title: "hello task",
-              newData: dataEdit,
-            }),
-          });
-          hasil();
-          // const data = await response.json();
-          console.log("save edit berhasil try");
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      } else {
-        console.log("error else kondisi salah");
-      }
+    const save = async () => {
+      const datasave = firstData;
+      const response = await fetch("/api/santri/updet/up", {
+        method: "PUT",
+        body: JSON.stringify({
+          userId: idx,
+          title: "hello task",
+          newData: datasave,
+        }),
+        headers: firstData,
+      });
+      console.log(datasave, "dua data dua");
+      // response();
     };
-    fetchData().then((e) => {
-      console.log("log fetch data bawah");
+    save().then(() => {
+      console.log("parameter e save");
     });
-    console.log("log 95 dibawah fetch");
-
-    // src\pages\api\santri\updet\[update].js
-    // const hasil = await fetch(`api/santri/updet/${update}`, {
-    //   method: "PUT",
-    //   body: JSON.stringify(dataEdit),
-    //   headers: dataEdit,
-    // });
-    // console.log(hasil.url, "hasil");
-    // console.log("====================================");
-    // console.log("Test");
-    // console.log("====================================");
+    // console.log(hasil, "hasil");
+    console.log("====================================");
+    console.log("Test");
+    console.log("====================================");
     // const newData = await hasil.json();
   };
   return (
@@ -111,13 +95,7 @@ export default function CardEditSantri({ id }) {
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
         {/* <section className="rounded-t mb-0 px-6 py-6"></section> */}
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form
-            onSubmit={(e) =>
-              saveEdit(e, id).then((data) => {
-                console.log(e, "data.message");
-              })
-            }
-          >
+          <form onSubmit={(e) => saveEdit(e, id)}>
             <h6 className="text-black text-sm mt-8 mb-10 font-bold uppercase">
               Edit Santri by Index
               <p>Parameter ID: {id}</p>

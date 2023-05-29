@@ -57,7 +57,7 @@ export default function CardTable({ color }) {
             </div>
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
               <Link
-                href="/admin/new-santri"
+                href="/admin/santri/new-santri"
                 className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
               >
                 <span>Add New Santri</span>
@@ -147,7 +147,7 @@ export default function CardTable({ color }) {
               {listSantri.map((santri, idxx) => {
                 return (
                   <tr key={santri.id} className="bg-slate-300">
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
                       <Link
                         href={{
                           pathname: `/admin/santri/edit/${santri.id}`
@@ -165,7 +165,7 @@ export default function CardTable({ color }) {
                         className="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150 bg-slate-600"
                       />
                     </th>
-                    <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-2 text-left">
+                    <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1 text-left">
                       <span
                         className={
                           "ml-3 " +
@@ -177,20 +177,20 @@ export default function CardTable({ color }) {
                         {santri.nama}
                       </span>
                     </th>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
                       {santri.nim}
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
                       <div className="flex">
                         <span> {santri.orangtua}</span>
                       </div>
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
                       <div className="flex items-center">
                         <span className="mr-2">{santri.kelas}</span>
                       </div>
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
                       <button
                         class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
                         onClick={(e) => onHapus(e, santri.id)}

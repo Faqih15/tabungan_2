@@ -5,11 +5,11 @@ export default async function updateSantri(req, res) {
     console.log(req.method, "req.method");
     console.log(req.body, "req.body");
     console.log(req.headers, "req.headers");
-    const { update } = req.query;
-    console.log(update, "up=req.query");
+    const { id } = req.query;
+    console.log(id, "up=req.query");
 
     try {
-      const respon = await getSantri(update);
+      const respon = await getSantri(id);
       // res.status(200).json(respon);
       console.log("try berhasil");
       console.log("====================================");
