@@ -1,19 +1,37 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
+import { confirmAlert } from "react-confirm-alert";
 
 export default function CardTable({ color }) {
   const [listSantri, setlistSantri] = useState([]);
   useEffect(() => {
-    fetch("/api/santri/map-santri-api")
+    fetch("/api/santri/map-api")
       .then((res) => res.json())
       .then((data) => setlistSantri(data));
   }, []);
 
+  const modul = () => {
+    confirmAlert({
+      title: "Confirm to submit",
+      message: "Are you sure to do this.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => alert("Click Yes"),
+        },
+        {
+          label: "No",
+          onClick: () => alert("Click No"),
+        },
+      ],
+    });
+  };
+
   const onHapus = async (e, santri_id, idxx) => {
     e.preventDefault();
 
-    await fetch("/api/santri/del-sant-api", {
+    await fetch("/api/santri/del-api", {
       method: "DELETE",
       body: santri_id, // assuming you need to send the 'santri_id' as JSON data
       headers: {
@@ -77,26 +95,6 @@ export default function CardTable({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Edit Profil
-                </th>
-                <th
-                  className={
-                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                  }
-                >
-                  Check
-                </th>
-                <th
-                  className={
-                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                  }
-                >
                   Nama
                 </th>
                 <th
@@ -138,33 +136,25 @@ export default function CardTable({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
+                  Edit Profil
+                </th>
+                <th
+                  className={
+                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                  }
+                >
                   Hapus Profil
                 </th>
               </tr>
             </thead>
 
             <tbody className="py-5">
-              {listSantri.map((santri, idxx) => {
+              {listSantri.map((santri) => {
                 return (
                   <tr key={santri.id} className="bg-slate-300">
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
-                      <Link
-                        href={{
-                          pathname: `/admin/santri/edit/${santri.id}`,
-                        }}
-                        class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
-                      >
-                        <span>Edit Santri</span>
-                      </Link>
-                    </td>
-                    <th>
-                      <input
-                        id="index"
-                        type="checkbox"
-                        autoComplete="off"
-                        className="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150 bg-slate-600"
-                      />
-                    </th>
                     <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1 text-left">
                       <span
                         className={
@@ -191,11 +181,21 @@ export default function CardTable({ color }) {
                       </div>
                     </td>
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
+                      <Link
+                        href={{
+                          pathname: `/admin/santri/edit/${santri.id}`,
+                        }}
+                        class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
+                      >
+                        <span>✏️</span>
+                      </Link>
+                    </td>
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
                       <button
                         class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
                         onClick={(e) => onHapus(e, santri.id)}
                       >
-                        Hapus
+                        ❌
                       </button>
                     </td>
 

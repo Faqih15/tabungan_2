@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { datakelas } from "./DataKelas";
+// import Option from "react-select";
 
 const menuStyle = {
   menu: (base) => ({
@@ -35,6 +36,15 @@ const menuStyle = {
 };
 
 export default function CardSettings({ props }) {
+  const [listKelas, setlistKelas] = useState([]);
+  useEffect(() => {
+    fetch("/api/data-kelas/get")
+      .then((res) => res.json())
+      .then((data) => setlistKelas(data));
+  }, []);
+  console.log(listKelas, "list kelas");
+ 
+
   const [datapertama, setdatapertama] = useState({
     nama: "",
     nim: "",
@@ -42,7 +52,6 @@ export default function CardSettings({ props }) {
     kelas: "",
     password: "",
   });
-
   const mendaftar = (e) => {
     setdatapertama({ ...datapertama, [e.target.name]: e.target.value });
     // console.log(e.target.value, "e.target.value");
@@ -57,7 +66,7 @@ export default function CardSettings({ props }) {
         kelas: datapertama.kelas,
         password: datapertama.password,
       };
-      const response = await fetch("/api/santri/new-santri-api", {
+      const response = await fetch("/api/santri/new-api", {
         method: "POST",
         body: JSON.stringify(data),
       });
@@ -133,7 +142,6 @@ export default function CardSettings({ props }) {
                   </label>
                   <input
                     onChange={mendaftar}
-                    
                     type="text"
                     id="orangtua"
                     name="orangtua"
@@ -159,7 +167,7 @@ export default function CardSettings({ props }) {
                       })
                     }
                     blurInputOnSelect={false} //set by default, but to be sure
-                    options={datakelas}
+                    options={listKelas}
                     type="text"
                     id="kelas"
                     name="kelas"

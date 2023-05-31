@@ -14,7 +14,7 @@ export default function FooterAdmin() {
                   href="https://www.creative-tim.com?ref=nnjs-footer-admin"
                   className="text-black hover:text-blueGray-700 text-sm font-semibold py-1"
                 >
-                  Creative Tim
+                  Karamel ID
                 </a>
               </div>
             </div>
@@ -25,7 +25,7 @@ export default function FooterAdmin() {
                     href="https://www.creative-tim.com?ref=nnjs-footer-admin"
                     className="text-black hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
-                    FooterAdmin Creative Tim
+                    Karamel ID
                   </a>
                 </li>
                 <li>

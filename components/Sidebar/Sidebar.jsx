@@ -23,7 +23,7 @@ export default function Sidebar() {
 
           <Link
             //   href="/"
-            href="/admin/santri/home"
+            href="/admin"
             className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
           >
             KOPERASI MAHAD
@@ -100,7 +100,7 @@ export default function Sidebar() {
               <li className="items-center hover:bg-gray-200">
                 <Link
                   //   href="/"
-                  href="/admin/santri/home"
+                  href="/admin/santri"
                   className={"text-xs uppercase py-3 font-bold block "}
                 >
                   <i
@@ -119,19 +119,19 @@ export default function Sidebar() {
               <li className="items-center hover:bg-gray-200">
                 <Link
                   //   href="/"
-                  href="/admin/santri/new-santri"
+                  href="/admin/santri"
                   className={"text-xs uppercase py-3 font-bold block "}
                 >
-                  <i className={"fas fa-tools mr-2 text-sm "}></i> New Santri
+                  <i className={"fas fa-tools mr-2 text-sm "}></i> Data Santri
                 </Link>
               </li>
 
               <li className="items-center hover:bg-gray-200">
                 <Link
-                  href="/admin/admin/create-admin"
+                  href="/admin/admin"
                   className={"text-xs uppercase py-3 font-bold block "}
                 >
-                  <i className={"fas fa-table mr-2 text-sm "}></i> New Admin
+                  <i className={"fas fa-table mr-2 text-sm "}></i> Data Admin
                 </Link>
               </li>
               <li className="items-center hover:bg-gray-200">
@@ -139,7 +139,7 @@ export default function Sidebar() {
                   href="/admin/data-kelas/new-class"
                   className={"text-xs uppercase py-3 font-bold block "}
                 >
-                  <i className={"fas fa-table mr-2 text-sm "}></i> New Class
+                  <i className={"fas fa-table mr-2 text-sm "}></i> Data Kelas
                 </Link>
               </li>
             </ul>
@@ -152,7 +152,7 @@ export default function Sidebar() {
             </h6>
             {/* Navigation */}
 
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+            {/* <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center hover:bg-gray-200">
                 <Link
                   //   href="/"
@@ -174,7 +174,7 @@ export default function Sidebar() {
                   Register
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </nav>

@@ -1,4 +1,4 @@
-import { mapSantri } from "@lib/santri/map-santri-lib";
+import { mapSantri } from "@lib/santri/map-lib";
 
 export default async function mapdatasantri(req, res) {
   if (req.method === "GET") {

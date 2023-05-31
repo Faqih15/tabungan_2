@@ -97,8 +97,7 @@ export default function CardEditSantri({ id }) {
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
           <form onSubmit={(e) => saveEdit(e, id)}>
             <h6 className="text-black text-sm mt-8 mb-10 font-bold uppercase">
-              Edit Santri by Index
-              <p>Parameter ID: {id}</p>
+              Edit Santri
             </h6>
             <div className="flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4">
