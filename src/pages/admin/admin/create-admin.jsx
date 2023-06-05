@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Admin from "layouts/layoutAdmin";
 function Administrator() {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const addAdmin = (e) => {
     e.preventDefault();
     const postData = async () => {
@@ -26,7 +25,7 @@ function Administrator() {
     });
     e.target.reset();
   };
-  
+
   function myFunction() {
     var x = document.getElementById("password");
     if (x.type === "password") {
@@ -35,6 +34,9 @@ function Administrator() {
       x.type = "password";
     }
   }
+  const backtoadmin = () => {
+    window.location.href = "/admin/admin";
+  };
   return (
     <div>
       <Admin className="">
@@ -91,6 +93,7 @@ function Administrator() {
                 <button
                   type="submit"
                   className="bg-pink-600 text-white font-bold mt-5 py-2 px-4 rounded opacity-75"
+                  onClick={backtoadmin}
                 >
                   SUBMIT FORM
                 </button>

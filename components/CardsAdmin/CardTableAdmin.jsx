@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
+import ConfirmAlert from "./CardAlertDelete";
 
 export default function CardTableAdmin({ color }) {
   const [listAdmin, setlistAdmin] = useState([]);
@@ -9,33 +10,10 @@ export default function CardTableAdmin({ color }) {
       .then((res) => res.json())
       .then((data) => setlistAdmin(data));
   }, []);
-  console.log(listAdmin, "list Admin 12");
-
-  // const onHapus = async (e, santri_id, idxx) => {
-  //   e.preventDefault();
-
-  //   await fetch("/api/santri/del-sant-api", {
-  //     method: "DELETE",
-  //     body: santri_id, // assuming you need to send the 'santri_id' as JSON data
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       // Perform the necessary operations with the response data
-  //       console.log(data); // Log the response data to the console
-
-  //       // Update the listSantri state after successful deletion
-  //       setlistSantri((prevList) =>
-  //         prevList.filter((item) => item.id !== santri_id)
-  //       );
-  //     })
-  //     .catch((error) => {
-  //       console.log(error); // Log any error that occurred during the fetch request
-  //     });
-  // };
-
+  
+  const handleDelete = (id) => {
+    setlistAdmin((prevList) => prevList.filter((item) => item.id !== id));
+  };
   return (
     <>
       <div
@@ -66,7 +44,6 @@ export default function CardTableAdmin({ color }) {
             </div>
           </div>
         </div>
-
         <section className="block w-full overflow-x-auto">
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
@@ -103,7 +80,6 @@ export default function CardTableAdmin({ color }) {
                 </th>
               </tr>
             </thead>
-
             <tbody className="py-5">
               {listAdmin.map((admin) => {
                 return (
@@ -132,12 +108,11 @@ export default function CardTableAdmin({ color }) {
                     </td>
 
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
-                      <button
-                        class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
-                        // onClick={(e) => onHapus(e, santri.id)}
-                      >
-                        ❌
-                      </button>
+                      <ConfirmAlert
+                        admin={admin}
+                        id={admin.id}
+                        handleDelete={handleDelete}
+                      ></ConfirmAlert>
                     </td>
                   </tr>
                 );

@@ -4,7 +4,7 @@ import CardStats from "components/Cards/CardStats";
 export default function HeaderStats() {
   const [listSantri, setlistSantri] = useState([]);
   useEffect(() => {
-    fetch("/api/santri/map-santri-api")
+    fetch("/api/santri/map-api")
       .then((res) => res.json())
       .then((data) => setlistSantri(data));
   }, []);

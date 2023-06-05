@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
-import { datakelas } from "./DataKelas";
-// import Option from "react-select";
 
 const menuStyle = {
   menu: (base) => ({
@@ -42,8 +40,6 @@ export default function CardSettings({ props }) {
       .then((res) => res.json())
       .then((data) => setlistKelas(data));
   }, []);
-  console.log(listKelas, "list kelas");
- 
 
   const [datapertama, setdatapertama] = useState({
     nama: "",
@@ -54,7 +50,6 @@ export default function CardSettings({ props }) {
   });
   const mendaftar = (e) => {
     setdatapertama({ ...datapertama, [e.target.name]: e.target.value });
-    // console.log(e.target.value, "e.target.value");
   };
   const daftar = (e) => {
     e.preventDefault();
@@ -79,6 +74,10 @@ export default function CardSettings({ props }) {
     e.target.reset();
   };
 
+  const backtosantri = () => {
+    window.location.href = "/admin/santri";
+  };
+
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
@@ -100,7 +99,6 @@ export default function CardSettings({ props }) {
                   <input
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     onChange={mendaftar}
-                    // onInput={(e) => e.target.value = ("" + e.target.value).toUpperCase()}
                     type="text"
                     id="nama"
                     name="nama"
@@ -202,6 +200,7 @@ export default function CardSettings({ props }) {
             <button
               type="submit"
               className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75"
+              onClick={backtosantri}
             >
               DAFTARKAN MURID
             </button>
@@ -218,6 +217,5 @@ export async function getServerSideProps() {
   const data = await props.csp();
   console.log("server console");
 
-  // Pass data to the page via props
   return { props: { data } };
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import { confirmAlert } from "react-confirm-alert";
+import ConfirmAlert from "./CardAlertDelete";
 
 export default function CardTable({ color }) {
   const [listSantri, setlistSantri] = useState([]);
@@ -11,46 +11,8 @@ export default function CardTable({ color }) {
       .then((data) => setlistSantri(data));
   }, []);
 
-  const modul = () => {
-    confirmAlert({
-      title: "Confirm to submit",
-      message: "Are you sure to do this.",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () => alert("Click Yes"),
-        },
-        {
-          label: "No",
-          onClick: () => alert("Click No"),
-        },
-      ],
-    });
-  };
-
-  const onHapus = async (e, santri_id, idxx) => {
-    e.preventDefault();
-
-    await fetch("/api/santri/del-api", {
-      method: "DELETE",
-      body: santri_id, // assuming you need to send the 'santri_id' as JSON data
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Perform the necessary operations with the response data
-        console.log(data); // Log the response data to the console
-
-        // Update the listSantri state after successful deletion
-        setlistSantri((prevList) =>
-          prevList.filter((item) => item.id !== santri_id)
-        );
-      })
-      .catch((error) => {
-        console.log(error); // Log any error that occurred during the fetch request
-      });
+  const handleDelete = (id) => {
+    setlistSantri((prevList) => prevList.filter((item) => item.id !== id));
   };
 
   return (
@@ -89,7 +51,7 @@ export default function CardTable({ color }) {
               <tr className="thead-mb-10">
                 <th
                   className={
-                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
+                    "px-7 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
@@ -155,7 +117,7 @@ export default function CardTable({ color }) {
               {listSantri.map((santri) => {
                 return (
                   <tr key={santri.id} className="bg-slate-300">
-                    <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1 text-left">
+                    <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-left">
                       <span
                         className={
                           "ml-3 " +
@@ -167,20 +129,20 @@ export default function CardTable({ color }) {
                         {santri.nama}
                       </span>
                     </th>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       {santri.nim}
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       <div className="flex">
                         <span> {santri.orangtua}</span>
                       </div>
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       <div className="flex items-center">
                         <span className="mr-2">{santri.kelas}</span>
                       </div>
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       <Link
                         href={{
                           pathname: `/admin/santri/edit/${santri.id}`,
@@ -190,23 +152,13 @@ export default function CardTable({ color }) {
                         <span>✏️</span>
                       </Link>
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
-                      <button
-                        class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
-                        onClick={(e) => onHapus(e, santri.id)}
-                      >
-                        ❌
-                      </button>
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
+                      <ConfirmAlert
+                        santri={santri}
+                        id={santri.id}
+                        handleDelete={handleDelete}
+                      ></ConfirmAlert>
                     </td>
-
-                    {/* <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <div className="flex items-center">
-                        <span className="mr-2">{santri.createdAt}</span>
-                      </div>
-                    </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                      <TableDropdown />
-                    </td> */}
                   </tr>
                 );
               })}

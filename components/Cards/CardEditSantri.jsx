@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
-import { datakelas } from "./DataKelas";
 
 const menuStyle = {
   menu: (base) => ({
@@ -33,9 +32,15 @@ const menuStyle = {
     color: "Gray",
   }),
 };
-
 export default function CardEditSantri({ id }) {
   const [firstData, setFirstData] = useState("");
+  const [listKelas, setlistKelas] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/data-kelas/get")
+      .then((res) => res.json())
+      .then((data) => setlistKelas(data));
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -50,22 +55,12 @@ export default function CardEditSantri({ id }) {
     fetchData();
   }, [id]);
   console.log(firstData, "firstData 52");
-
-  // const [firstData, setFirstData] = useState({
-  //   nama: "",
-  //   nim: "",
-  //   orangtua: "",
-  //   kelas: "",
-  // });
   const edit = (e) => {
     setFirstData({ ...firstData, [e.target.name]: e.target.value });
     console.log(e.target.value, "e.target.value");
   };
-
   const saveEdit = (e, idx) => {
     e.preventDefault();
-    // console.log(idx, "idx param id", id);
-    // idx dan id valuenya sama, update diambil dr index nama yg dimunculkan, id diambil pas render
     const save = async () => {
       const datasave = firstData;
       const response = await fetch("/api/santri/updet/up", {
@@ -83,17 +78,14 @@ export default function CardEditSantri({ id }) {
     save().then(() => {
       console.log("parameter e save");
     });
-    // console.log(hasil, "hasil");
-    console.log("====================================");
-    console.log("Test");
-    console.log("====================================");
-    // const newData = await hasil.json();
     e.target.reset();
+  };
+  const backtosantri = () => {
+    window.location.href = "/admin/santri";
   };
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
-        {/* <section className="rounded-t mb-0 px-6 py-6"></section> */}
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
           <form onSubmit={(e) => saveEdit(e, id)}>
             <h6 className="text-black text-sm mt-8 mb-10 font-bold uppercase">
@@ -174,8 +166,8 @@ export default function CardEditSantri({ id }) {
                         target: { value: e.value, name: "kelas" },
                       })
                     }
-                    blurInputOnSelect={false} //set by default, but to be sure
-                    options={datakelas}
+                    blurInputOnSelect={false} 
+                    options={listKelas}
                     defaultValue={firstData.kelas}
                     type="text"
                     id="kelas"
@@ -187,30 +179,11 @@ export default function CardEditSantri({ id }) {
                   />
                 </div>
               </div>
-              {/* <div className="w-full lg:w-6/12 px-4">
-                <div className="relative w-full mb-3">
-                  <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    htmlFor="grid-password"
-                  >
-                    Password
-                  </label>
-                  <input
-                    // onChange={mendaftar}
-                    type="text"
-                    id="password"
-                    name="password"
-                    className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="edit password disable dulu, dev males"
-                    autoComplete="off"
-                    required
-                  />
-                </div>
-              </div> */}
             </div>
             <button
               type="submit"
-              className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75 uppercase"
+              className="bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75 uppercase"
+              onClick={backtosantri}
             >
               save editing
             </button>

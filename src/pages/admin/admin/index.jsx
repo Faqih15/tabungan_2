@@ -1,6 +1,6 @@
 import React from "react";
 import Admin from "layouts/layoutAdmin.jsx";
-import CardTableAdmin from "@components/Cards/CardTableAdmin";
+import CardTableAdmin from "@components/CardsAdmin/CardTableAdmin";
 
 export default function Home() {
   return (

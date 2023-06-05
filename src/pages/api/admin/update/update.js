@@ -1,6 +1,6 @@
-import { updateDataSantri } from "@lib/santri/updet/updet-lib";
+import { updateDataAdmin } from "@lib/admin/update/update";
 
-export default async function updateSantri(req, res) {
+export default async function updateAdmin(req, res) {
   // console.log(req, "req req");
   if (req.method === "PUT") {
     const body = JSON.parse(req.body);
@@ -9,7 +9,7 @@ export default async function updateSantri(req, res) {
     // console.log(data, "newData up api");
 
     try {
-      const respon = await updateDataSantri(newId, data);
+      const respon = await updateDataAdmin(newId, data);
       res.status(200).json(respon);
       console.log("====================================");
       console.log("TRY berhasil");

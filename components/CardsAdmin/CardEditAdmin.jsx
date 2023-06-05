@@ -15,18 +15,50 @@ export default function CardEditAdmin({ id }) {
     }
     fetchData();
   }, [id]);
-  console.log(firstData, "firstData 52");
+  // console.log(firstData, "firstData 52");
 
   const edit = (e) => {
+    setFirstData({ ...firstData, [e.target.name]: e.target.value });
     console.log(e.target.value, "e.target.value");
   };
 
+  const saveEdit = (e, idx) => {
+    e.preventDefault();
+    // console.log(idx, "idx param id", id);
+    // idx dan id valuenya sama, update diambil dr index nama yg dimunculkan, id diambil pas render
+    const save = async () => {
+      const datasave = firstData;
+      const response = await fetch("/api/admin/update/update", {
+        method: "PUT",
+        body: JSON.stringify({
+          userId: idx,
+          title: "hello task",
+          newData: datasave,
+        }),
+        headers: firstData,
+      });
+      console.log(datasave, "dua data dua");
+      // response();
+    };
+    save().then(() => {
+      console.log("parameter e save");
+    });
+    // console.log(hasil, "hasil");
+    console.log("====================================");
+    console.log("Test");
+    console.log("====================================");
+    // const newData = await hasil.json();
+    e.target.reset();
+  };
+  const backtoadmin = () => {
+    window.location.href = "/admin/admin";
+  };
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2 bg-neutral-100">
         {/* <section className="rounded-t mb-0 px-6 py-6"></section> */}
         <section className="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form>
+          <form onSubmit={(e) => saveEdit(e, id)}>
             <h6 className="text-black text-sm mt-8 mb-10 font-bold uppercase">
               Edit Admin
               <p>Parameter ID: {id}</p>
@@ -45,7 +77,7 @@ export default function CardEditAdmin({ id }) {
                     onChange={edit}
                     type="text"
                     defaultValue={firstData.email}
-                    name="nama"
+                    name="email"
                     autoComplete="off"
                     required
                   />
@@ -55,6 +87,7 @@ export default function CardEditAdmin({ id }) {
             <button
               type="submit"
               className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75 uppercase"
+              onClick={backtoadmin}
             >
               Save
             </button>
