@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import ConfirmAlert from "./CardAlertDelete";
+import ConfirmAlertKelas from "./CardAlertDelete";
+// import ConfirmAlert from "./CardAlertDelete";
 export default function CardTable({ color }) {
-  const [listSantri, setlistSantri] = useState([]);
+  const [listKelas, setlistKelas] = useState([]);
   useEffect(() => {
-    fetch("/api/santri/map-api")
+    fetch("/api/data-kelas/get")
       .then((res) => res.json())
-      .then((data) => setlistSantri(data));
+      .then((data) => setlistKelas(data));
   }, []);
+  console.log(listKelas, "list kelas di page tabel kelas");
+
   const handleDelete = (id) => {
-    setlistSantri((prevList) => prevList.filter((item) => item.id !== id));
+    setlistKelas((prevList) => prevList.filter((item) => item.id !== id));
   };
   return (
     <>
@@ -29,7 +32,7 @@ export default function CardTable({ color }) {
                   (color === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                Data Tabungan Santri
+                Data Kelas
               </h3>
             </div>
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -54,7 +57,7 @@ export default function CardTable({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Nama
+                  KELAS
                 </th>
                 <th
                   className={
@@ -63,9 +66,7 @@ export default function CardTable({ color }) {
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
-                >
-                  Nim
-                </th>
+                ></th>
 
                 <th
                   className={
@@ -74,8 +75,16 @@ export default function CardTable({ color }) {
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
+                ></th>
+                <th
+                  className={
+                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                  }
                 >
-                  Ortu
+                  KODE
                 </th>
                 <th
                   className={
@@ -85,7 +94,7 @@ export default function CardTable({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Kelas
+                  Edit Kelas
                 </th>
                 <th
                   className={
@@ -95,26 +104,16 @@ export default function CardTable({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Edit Profil
-                </th>
-                <th
-                  className={
-                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                  }
-                >
-                  Hapus Profil
+                  Hapus Kelas
                 </th>
               </tr>
             </thead>
 
             <tbody className="py-5 bg-slate-300">
-              {listSantri.map((santri) => {
+              {listKelas.map((kelas) => {
                 return (
-                  <tr key={santri.id} className="">
-                    <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-left">
+                  <tr key={kelas.id} className="">
+                    <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 whitespace-nowrap text-left">
                       <span
                         className={
                           "ml-3 " +
@@ -123,26 +122,26 @@ export default function CardTable({ color }) {
                             : "text-white")
                         }
                       >
-                        {santri.nama}
+                        {kelas.value}
                       </span>
                     </th>
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
-                      {santri.nim}
+                      {/* {santri.nim} */}
                     </td>
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       <div className="flex">
-                        <span> {santri.orangtua}</span>
+                        {/* <span> {santri.orangtua}</span> */}
                       </div>
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 whitespace-nowrap">
                       <div className="flex items-center">
-                        <span className="mr-2">{santri.kelas}</span>
+                        <span className="mr-2">{kelas.code}</span>
                       </div>
                     </td>
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       <Link
                         href={{
-                          pathname: `/admin/santri/edit/${santri.id}`,
+                          pathname: `/admin/datakelas/edit/${kelas.id}`,
                         }}
                         class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
                       >
@@ -150,11 +149,11 @@ export default function CardTable({ color }) {
                       </Link>
                     </td>
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
-                      <ConfirmAlert
-                        santri={santri}
-                        id={santri.id}
+                      <ConfirmAlertKelas
+                        kelas={kelas}
+                        id={kelas.id}
                         handleDelete={handleDelete}
-                      ></ConfirmAlert>
+                      ></ConfirmAlertKelas>
                     </td>
                   </tr>
                 );

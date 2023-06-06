@@ -136,7 +136,7 @@ export default function Sidebar() {
               </li>
               <li className="items-center hover:bg-gray-200">
                 <Link
-                  href="/admin/data-kelas/new-class"
+                  href="/admin/datakelas"
                   className={"text-xs uppercase py-3 font-bold block "}
                 >
                   <i className={"fas fa-table mr-2 text-sm "}></i> Data Kelas

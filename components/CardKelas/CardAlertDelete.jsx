@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ConfirmAlert({ santri, id, handleDelete }) {
+export default function ConfirmAlertKelas({ kelas, id, handleDelete }) {
   const [isOpen, setIsOpen] = useState(false);
   //   console.log(id, "id di alert delete");
   const openAlert = () => {
@@ -12,7 +12,7 @@ export default function ConfirmAlert({ santri, id, handleDelete }) {
 
   const handleConfirm = async () => {
     // e.preventDefault();
-    await fetch("/api/santri/del-api", {
+    await fetch("/api/data-kelas/delete", {
       method: "DELETE",
       body: id, // assuming you need to send the 'id' as JSON data
       headers: {
@@ -45,7 +45,7 @@ export default function ConfirmAlert({ santri, id, handleDelete }) {
           <div className="bg-white rounded-lg p-6">
             <h2 className="text-lg font-bold mb-4">Confirmation</h2>
             <p className="mb-4">
-              Are you sure you want to delete {santri.nama}
+              Are you sure you want to delete KELAS : {kelas.value}
             </p>
             <div className="flex justify-end">
               <button

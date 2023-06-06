@@ -33,7 +33,7 @@ export default function ConfirmAlert({ admin, id, handleDelete }) {
     <div className="">
       <button
         onClick={openAlert}
-        className="bg-transparent hover:bg-gray-400 text-white font-bold py-2 px-4 m-2 rounded focus:outline-none focus:shadow-outline"
+        className="bg-transparent hover:bg-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
       >
         ❌
       </button>

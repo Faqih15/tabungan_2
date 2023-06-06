@@ -76,15 +76,16 @@ export default function CardTableAdmin({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Hapus Profil
+                  Hapus Admin
                 </th>
               </tr>
             </thead>
-            <tbody className="py-5">
+            
+            <tbody className="py-5 bg-slate-300">
               {listAdmin.map((admin) => {
                 return (
-                  <tr key={admin.id} className="bg-slate-300">
-                    <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1 text-left">
+                  <tr key={admin.id} className="">
+                    <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-left">
                       <span
                         className={
                           "ml-3 " +
@@ -96,7 +97,7 @@ export default function CardTableAdmin({ color }) {
                         {admin.email}
                       </span>
                     </th>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       <Link
                         href={{
                           pathname: `/admin/admin/edit/${admin.id}`,
@@ -107,7 +108,7 @@ export default function CardTableAdmin({ color }) {
                       </Link>
                     </td>
 
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-1">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       <ConfirmAlert
                         admin={admin}
                         id={admin.id}

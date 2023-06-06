@@ -36,6 +36,8 @@ export default function CardEditSantri({ id }) {
   const [firstData, setFirstData] = useState("");
   const [listKelas, setlistKelas] = useState([]);
 
+  console.log(id, "id di card edit santri");
+
   useEffect(() => {
     fetch("/api/data-kelas/get")
       .then((res) => res.json())

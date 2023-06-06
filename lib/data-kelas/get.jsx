@@ -8,6 +8,7 @@ export async function mapKelas() {
 
     const kelas = results.map((result) => {
       return {
+        id: result.id,
         value: result.value,
         label: result.label,
         code: result.code,

@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import Admin from "layouts/layoutAdmin";
 function Administrator() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [value, setValue] = useState("");
-
   const [label, setLabel] = useState("");
   const [code, setCode] = useState("");
 
@@ -31,7 +26,6 @@ function Administrator() {
     e.target.reset();
   };
 
-  
   return (
     <div>
       <Admin className="">
