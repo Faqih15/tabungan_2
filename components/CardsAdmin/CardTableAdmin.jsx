@@ -10,7 +10,7 @@ export default function CardTableAdmin({ color }) {
       .then((res) => res.json())
       .then((data) => setlistAdmin(data));
   }, []);
-  
+
   const handleDelete = (id) => {
     setlistAdmin((prevList) => prevList.filter((item) => item.id !== id));
   };
@@ -50,6 +50,16 @@ export default function CardTableAdmin({ color }) {
               <tr className="thead-mb-10">
                 <th
                   className={
+                    "w-14 px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                  }
+                >
+                  NO
+                </th>
+                <th
+                  className={
                     "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
@@ -80,11 +90,23 @@ export default function CardTableAdmin({ color }) {
                 </th>
               </tr>
             </thead>
-            
+
             <tbody className="py-5 bg-slate-300">
-              {listAdmin.map((admin) => {
+              {listAdmin.map((admin, index) => {
                 return (
                   <tr key={admin.id} className="">
+                    <td className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
+                      <span
+                        className={
+                          "ml-3 " +
+                          +(color === "light"
+                            ? "text-blueGray-600"
+                            : "text-white")
+                        }
+                      >
+                        {index + 1}
+                      </span>
+                    </td>
                     <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-left">
                       <span
                         className={

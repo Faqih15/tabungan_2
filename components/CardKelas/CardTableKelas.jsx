@@ -40,7 +40,7 @@ export default function CardTable({ color }) {
                 href="/admin/santri/new-santri"
                 className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
               >
-                <span>Add New Santri</span>
+                <span>Tambah Kelas</span>
               </Link>
             </div>
           </div>

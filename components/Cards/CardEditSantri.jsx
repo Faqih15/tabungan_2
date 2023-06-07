@@ -26,6 +26,7 @@ const menuStyle = {
     "::-webkit-scrollbar-thumb:hover": {
       background: "#555",
     },
+    maxHeight: "600px",
   }),
   placeholder: (base) => ({
     ...base,
@@ -168,7 +169,7 @@ export default function CardEditSantri({ id }) {
                         target: { value: e.value, name: "kelas" },
                       })
                     }
-                    blurInputOnSelect={false} 
+                    blurInputOnSelect={false}
                     options={listKelas}
                     defaultValue={firstData.kelas}
                     type="text"
