@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import ConfirmAlertKelas from "./CardAlertDelete";
 // import ConfirmAlert from "./CardAlertDelete";
-export default function CardTable({ color }) {
+export default function TabelKelas({ color }) {
   const [listKelas, setlistKelas] = useState([]);
   useEffect(() => {
     fetch("/api/data-kelas/get")

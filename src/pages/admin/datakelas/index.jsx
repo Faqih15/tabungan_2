@@ -1,6 +1,8 @@
 import React from "react";
-import CardTable from "components/Cardkelas/CardTableKelas";
 import Admin from "layouts/layoutAdmin.jsx";
+import TabelKelas from "@components/CardKelas/CardTableKelas";
+// import TabelKelas from "components/Cardkelas/CardTableKelas";
+// import TabelKelas from "../../../../components/CardKelas"
 
 export default function Home() {
   return (
@@ -10,7 +12,7 @@ export default function Home() {
           {/* size kotak tabel */}
           <div className="flex flex-wrap mt-4 relative md:ml-5 md:mr-10">
             <div className="w-full mb-12 ">
-              <CardTable />
+              <TabelKelas />
             </div>
           </div>
         </Admin>
