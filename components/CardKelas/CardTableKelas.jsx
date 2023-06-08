@@ -166,10 +166,10 @@ export default function TabelKelas({ color }) {
   );
 }
 
-CardTable.defaultProps = {
+TabelKelas.defaultProps = {
   color: "light",
 };
 
-CardTable.propTypes = {
+TabelKelas.propTypes = {
   color: PropTypes.oneOf(["light", "dark"]),
 };
