@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import ConfirmAlertKelas from "./CardAlertDelete";
-export default function TabelKelas({ color }) {
-  const [listKelas, setlistKelas] = useState([]);
+// import Link from "next/link";
+export default function SantriPerKelas({ color, spk }) {
+  //   console.log(spk, "kelas di spk");
+  const [listSPK, setlistSPK] = useState([]);
+  //   const [first, setfirst] = useState([]);
   useEffect(() => {
-    fetch("/api/data-kelas/get")
-      .then((res) => res.json())
-      .then((data) => setlistKelas(data));
-  }, []);
-
-  const handleDelete = (id) => {
-    setlistKelas((prevList) => prevList.filter((item) => item.id !== id));
-  };
+    async function fetchData() {
+      try {
+        const response = await fetch(`/api/data-kelas/santri/${spk}`);
+        const data = await response.json();
+        setlistSPK(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+      //   console.log(listSPK, "listSPK di SPK baris 17");
+    }
+    fetchData();
+  }, [spk]);
+  console.log(listSPK, "listSPK di SPK baris 21");
   return (
     <>
       <div
@@ -30,16 +37,8 @@ export default function TabelKelas({ color }) {
                   (color === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                Data Kelas
+                Data Santri Per Kelas
               </h3>
-            </div>
-            <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-              <Link
-                href="/admin/datakelas/new-class"
-                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
-              >
-                <span>Tambah Kelas</span>
-              </Link>
             </div>
           </div>
         </div>
@@ -55,34 +54,17 @@ export default function TabelKelas({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  KELAS
+                  NO
                 </th>
                 <th
                   className={
-                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                  }
-                ></th>
-
-                <th
-                  className={
-                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                  }
-                ></th>
-                <th
-                  className={
-                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
+                    "px-7 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
                     (color === "light"
                       ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  KODE
+                  Nama
                 </th>
                 <th
                   className={
@@ -92,7 +74,7 @@ export default function TabelKelas({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Action
+                  Nim
                 </th>
                 <th
                   className={
@@ -102,63 +84,93 @@ export default function TabelKelas({ color }) {
                       : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                   }
                 >
-                  Hapus Kelas
+                  Ortu
+                </th>
+                <th
+                  className={
+                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                  }
+                >
+                  Kelas
+                </th>
+                <th
+                  className={
+                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                  }
+                >
+                  Edit Profil
+                </th>
+                <th
+                  className={
+                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                  }
+                >
+                  Hapus Profil
                 </th>
               </tr>
             </thead>
 
             <tbody className="py-5 bg-slate-300">
-              {listKelas.map((kelas) => {
+              {listSPK.map((santri, index) => {
                 return (
-                  <tr key={kelas.id} className="">
-                    <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 whitespace-nowrap text-left">
-                      <Link
-                        href={{
-                          pathname: `/admin/datakelas/santri/${kelas.value}`,
-                        }}
+                  <tr key={santri.id} className="">
+                    <td className="border-t-0 px-5 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
+                      <span
+                        className={
+                          "ml-3 " +
+                          +(color === "light"
+                            ? "text-blueGray-600"
+                            : "text-white")
+                        }
                       >
-                        <span
-                          className={
-                            "ml-3 " +
-                            +(color === "light"
-                              ? "text-blueGray-600"
-                              : "text-white")
-                          }
-                        >
-                          {kelas.value}
-                        </span>
-                      </Link>
+                        {index + 1}
+                      </span>
+                    </td>
+                    <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-left">
+                      <span
+                        className={
+                          "ml-3 " +
+                          +(color === "light"
+                            ? "text-blueGray-600"
+                            : "text-white")
+                        }
+                      >
+                        {santri.nama}
+                      </span>
                     </th>
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
-                      {/* {santri.nim} */}
+                      {santri.nim}
                     </td>
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       <div className="flex">
-                        {/* <span> {santri.orangtua}</span> */}
+                        <span> {santri.orangtua}</span>
                       </div>
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 whitespace-nowrap">
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       <div className="flex items-center">
-                        <span className="mr-2">{kelas.code}</span>
+                        <span className="mr-2">{santri.kelas}</span>
                       </div>
                     </td>
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       <Link
                         href={{
-                          pathname: `/admin/datakelas/edit/${kelas.id}`,
+                          pathname: `/admin/santri/edit/${santri.id}`,
                         }}
                         className="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
                       >
                         <span>✏️</span>
                       </Link>
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
-                      <ConfirmAlertKelas
-                        kelas={kelas}
-                        id={kelas.id}
-                        handleDelete={handleDelete}
-                      ></ConfirmAlertKelas>
-                    </td>
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap"></td>
                   </tr>
                 );
               })}
@@ -170,10 +182,10 @@ export default function TabelKelas({ color }) {
   );
 }
 
-TabelKelas.defaultProps = {
+SantriPerKelas.defaultProps = {
   color: "light",
 };
 
-TabelKelas.propTypes = {
+SantriPerKelas.propTypes = {
   color: PropTypes.oneOf(["light", "dark"]),
 };

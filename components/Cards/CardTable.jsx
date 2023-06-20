@@ -12,6 +12,9 @@ export default function CardTable({ color }) {
   const handleDelete = (id) => {
     setlistSantri((prevList) => prevList.filter((item) => item.id !== id));
   };
+  const a = 3;
+  const b = -2;
+  console.log(!(a > 0 || b > 0), "ternary");
   return (
     <>
       <div
@@ -86,34 +89,13 @@ export default function CardTable({ color }) {
                 >
                   Ortu
                 </th>
-                <th
-                  className={
-                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                  }
-                >
+                <th className="px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
                   Kelas
                 </th>
-                <th
-                  className={
-                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                  }
-                >
-                  Edit Profil
+                <th className="px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-center bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  Action
                 </th>
-                <th
-                  className={
-                    "px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                  }
-                >
+                <th className="px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
                   Hapus Profil
                 </th>
               </tr>
@@ -161,22 +143,27 @@ export default function CardTable({ color }) {
                       </div>
                     </td>
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
-                      <Link
-                        href={{
-                          pathname: `/admin/santri/edit/${santri.id}`,
-                        }}
-                        class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
-                      >
-                        <span>✏️</span>
-                      </Link>
+                      <tr>
+                        <td>
+                          <Link
+                            href={{
+                              pathname: `/admin/santri/edit/${santri.id}`,
+                            }}
+                            className="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
+                          >
+                            <span>✏️</span>
+                          </Link>
+                        </td>
+                        <td>
+                          <ConfirmAlert
+                            santri={santri}
+                            id={santri.id}
+                            handleDelete={handleDelete}
+                          ></ConfirmAlert>
+                        </td>
+                      </tr>
                     </td>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
-                      <ConfirmAlert
-                        santri={santri}
-                        id={santri.id}
-                        handleDelete={handleDelete}
-                      ></ConfirmAlert>
-                    </td>
+                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap"></td>
                   </tr>
                 );
               })}

@@ -11,7 +11,7 @@ export function EditSantri() {
   useEffect(() => {
     setFirst(id);
   }, [id]);
-  console.log(id, "id di [id].jsx");
+  // console.log(id, "id di [id].jsx edit");
 
   return (
     <>

@@ -1,36 +1,59 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 export default function ConfirmAlertKelas({ kelas, id, handleDelete }) {
   const [isOpen, setIsOpen] = useState(false);
-  //   console.log(id, "id di alert delete");
+  const [first, setfirst] = useState([]);
+
   const openAlert = () => {
     setIsOpen(true);
+    async function fetchData() {
+      try {
+        const response = await fetch(`/api/data-kelas/idfordelete/${id}`);
+        const data = await response.json();
+        console.log(data, "data di cardAlertDelete");
+        setfirst(data);
+        console.log(first, "first dlm");
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        console.log("Error fetching data:");
+      }
+    }
+    fetchData();
   };
   const closeAlert = () => {
     setIsOpen(false);
   };
 
-  const handleConfirm = async () => {
-    // e.preventDefault();
-    await fetch("/api/data-kelas/delete", {
-      method: "DELETE",
-      body: id, // assuming you need to send the 'id' as JSON data
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data, "19 19");
-        handleDelete(id);
-        // setlistSantri((prevList) => prevList.filter((item) => item.id !== id));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    closeAlert();
-  };
+  // console.log(first, "first di alert del");
 
+  const confirmDelete = async () => {
+    // e.preventDefault();
+    if (first === id) {
+      alert("kelas sudah dipakai gabisa delete");
+    } else {
+      await fetch("/api/data-kelas/delete", {
+        method: "DELETE",
+        body: id, // assuming you need to send the 'id' as JSON data
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data, "46 46 46");
+          handleDelete(id);
+          // setlistSantri((prevList) => prevList.filter((item) => item.id !== id));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      closeAlert();
+      alert("anda berhasil delete kelas");
+    }
+  };
+  // useEffect await fetch get data by id for daftar_kelas confirmed to delete
+  // check data id_kelas in santri_list
+  // if (id) { alert : "cant delete"}
+  // else { fetch delete}
   return (
     <div className="">
       <button
@@ -49,7 +72,7 @@ export default function ConfirmAlertKelas({ kelas, id, handleDelete }) {
             </p>
             <div className="flex justify-end">
               <button
-                onClick={handleConfirm}
+                onClick={confirmDelete}
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
               >
                 Confirm

@@ -1,8 +1,6 @@
 import React from "react";
 import Admin from "layouts/layoutAdmin.jsx";
 import TabelKelas from "@components/CardKelas/CardTableKelas";
-// import TabelKelas from "components/Cardkelas/CardTableKelas";
-// import TabelKelas from "../../../../components/CardKelas"
 
 export default function Home() {
   return (

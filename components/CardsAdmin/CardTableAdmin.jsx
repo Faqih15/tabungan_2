@@ -124,7 +124,7 @@ export default function CardTableAdmin({ color }) {
                         href={{
                           pathname: `/admin/admin/edit/${admin.id}`,
                         }}
-                        class="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
+                        className="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
                       >
                         <span>✏️</span>
                       </Link>

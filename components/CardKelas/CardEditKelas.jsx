@@ -2,20 +2,21 @@ import React, { useEffect, useState } from "react";
 
 export default function CardEditKelas({ id }) {
   const [firstData, setFirstData] = useState("");
-
+  const [lastData, setlastData] = useState("");
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(`/api/data-kelas/getid/${id}`);
         const data = await response.json();
         setFirstData(data);
+        setlastData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     }
     fetchData();
   }, [id]);
-  console.log(firstData);
+  // console.log(firstData);
   const edit = (e) => {
     setFirstData({ ...firstData, [e.target.name]: e.target.value });
   };
@@ -27,7 +28,7 @@ export default function CardEditKelas({ id }) {
         method: "PUT",
         body: JSON.stringify({
           userId: idx,
-          title: "hello task",
+          lastData: lastData,
           newData: datasave,
         }),
         headers: firstData,

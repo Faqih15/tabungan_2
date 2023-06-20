@@ -13,7 +13,7 @@ export async function mapSantri() {
         nama: result.nama,
         nim: result.nim,
         orangtua: result.orangtua,
-        kelas: result.kelas,
+        kelas: result.id_kelas,
       };
     });
 

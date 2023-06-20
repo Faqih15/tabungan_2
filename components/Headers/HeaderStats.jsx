@@ -24,6 +24,7 @@ export default function HeaderStats() {
                 <CardStats
                   statSubtitle="Total User"
                   statTitle={jumlahSantri}
+                  // statTitle="118"
                   statArrow="up"
                   statPercent="3.48"
                   statPercentColor="text-emerald-500"

@@ -1,12 +1,8 @@
-import React, { useState } from "react";
-import Link from "next/link";
-
-// layout for page
-
+import React from "react";
 import Auth from "layouts/layoutAuth";
 import SantriBuy from "components/Transaction/SantriBuy";
 
-export default function Transaction( ) {
+export default function Transaction() {
   return (
     <>
       <div>
@@ -17,4 +13,3 @@ export default function Transaction( ) {
     </>
   );
 }
-

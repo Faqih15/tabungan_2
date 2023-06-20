@@ -1,12 +1,9 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
-export default function SantriBuy() {
+export default function ScanCard() {
   const [hasilinput, sethasilinput] = useState({
-    nama: "",
-    nim: "",
-    transaksi: "",
-    pin: "",
+    idcard: "",
   });
 
   const onchange = (e) => {
@@ -15,7 +12,7 @@ export default function SantriBuy() {
   };
   const onsubmit = (e) => {
     e.preventDefault();
-    console.log(hasilinput, "hasilinput");
+    console.log(hasilinput, "id Card has scanned");
   };
   const focusOnRender = useRef();
   console.log(focusOnRender, "focusOnRender");
@@ -31,14 +28,14 @@ export default function SantriBuy() {
             <div className="rounded-t mb-0 px-6 py-6">
               <div className="text-center mb-3">
                 <h6 className="text-blueGray-500 text-sm font-bold">
-                  Transaksi Santri
+                  Scan Kartu Santri
                 </h6>
               </div>
               <hr className="mt-6 border-b-1 border-blueGray-300" />
             </div>
             <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
               <div className="text-blueGray-400 text-center mb-3 font-bold">
-                <small>Masukkan Data Transaksi Anda</small>
+                <small>Or sign in with credentials</small>
               </div>
               <form onSubmit={onsubmit}>
                 <div className="relative w-full mb-3">
@@ -46,55 +43,21 @@ export default function SantriBuy() {
                     className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                     htmlFor="grid-password"
                   >
-                    User
+                    scan your card
                   </label>
                   <input
                     onChange={onchange}
-                    type="text"
-                    id="nama"
-                    name="nama"
+                    type="number"
+                    ref={focusOnRender}
+                    id="idcard"
+                    max="9999999999"
+                    name="idcard"
                     autoComplete="off"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Name"
                   />
                 </div>
-                <div className="relative w-full mb-3">
-                  <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    htmlFor="grid-password"
-                  >
-                    NIM
-                  </label>
-                  <input
-                    onChange={onchange}
-                    type="number"
-                    id="nim"
-                    name="nim"
-                    ref={focusOnRender}
-                    autoComplete="off"
-                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="NIM"
-                  />
-                </div>
-                <div className="relative w-full mb-3">
-                  <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    htmlFor="grid-password"
-                  >
-                    Nilai Transaksi
-                  </label>
-                  <input
-                    onChange={onchange}
-                    type="number"
-                    id="transaksi"
-                    name="transaksi"
-                    min="100"
-                    max="30000"
-                    autoComplete="off"
-                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Uang"
-                  />
-                </div>
+
                 <div>
                   <label className="inline-flex items-center cursor-pointer ">
                     <input
@@ -109,12 +72,13 @@ export default function SantriBuy() {
                     </span>
                   </label>
                 </div>
+
                 <div className="text-center mt-6">
                   <button
                     className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                     type="submit"
                   >
-                    Bayar
+                    Sign In
                   </button>
                 </div>
               </form>

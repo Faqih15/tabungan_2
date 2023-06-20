@@ -142,14 +142,6 @@ export default function Sidebar() {
                   <i className={"fas fa-table mr-2 text-sm "}></i> Data Kelas
                 </Link>
               </li>
-              <li className="items-center hover:bg-gray-200">
-                <Link
-                  href="/admin/datakelas"
-                  className={"text-xs uppercase py-3 font-bold block "}
-                >
-                  <i className={"fas fa-table mr-2 text-sm "}></i> Data Kelas Lagi
-                </Link>
-              </li>
             </ul>
 
             {/* Divider */}
@@ -160,29 +152,35 @@ export default function Sidebar() {
             </h6>
             {/* Navigation */}
 
-            {/* <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center hover:bg-gray-200">
                 <Link
-                  //   href="/"
-                  href="/admin/edit-santri"
-                  className="hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                >
-                  <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
-                  Edit Santri
-                </Link>
-              </li>
-
-              <li className="items-center hover:bg-gray-200">
-                <Link
-                  //   href="/"
-                  href="#pablo"
+                  href="/transaction"
                   className="hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                 >
                   <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
-                  Register
+                  Transaksi
                 </Link>
               </li>
-            </ul> */}
+              <li className="items-center hover:bg-gray-200">
+                <Link
+                  href="/scanning"
+                  className="hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                >
+                  <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  Scan Santri
+                </Link>
+              </li>
+              <li className="items-center hover:bg-gray-200">
+                <Link
+                  href="/transaction"
+                  className="hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                >
+                  <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
+                  Password
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>

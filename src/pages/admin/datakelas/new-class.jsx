@@ -7,23 +7,22 @@ function Administrator() {
   const addAdmin = (e) => {
     e.preventDefault();
     const postData = async () => {
-      //isi data
       const data = {
         label: label,
         code: code,
       };
-      //kirim data
       const response = await fetch("/api/data-kelas/new-class-api", {
         method: "POST",
         body: JSON.stringify(data),
       });
-      // console.log(response, data , "response");
       return response.json();
     };
-    postData().then((data) => {
-      //   console.log(data, "data.message");
-    });
+    postData().then((data) => {});
     e.target.reset();
+  };
+
+  const backtodatakelas = () => {
+    window.location.href = "/admin/datakelas";
   };
 
   return (
@@ -78,6 +77,7 @@ function Administrator() {
                 <button
                   type="submit"
                   className="bg-pink-600 text-white font-bold mt-5 py-2 px-4 rounded opacity-75"
+                  onClick={backtodatakelas}
                 >
                   NEW CLASS
                 </button>

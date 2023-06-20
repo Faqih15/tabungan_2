@@ -6,10 +6,11 @@ export default async function updateKelas(req, res) {
     const body = JSON.parse(req.body);
     const newId = body.userId;
     const data = body.newData;
-    // console.log(data, "newData up api");
+    const lastData = body.lastData;
+    // console.log(lastData, "lastData up api");
 
     try {
-      const respon = await updateDataKelas(newId, data);
+      const respon = await updateDataKelas(newId, data, lastData);
       res.status(200).json(respon);
       console.log("====================================");
       console.log("TRY berhasil di api js update kelas");

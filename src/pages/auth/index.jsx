@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import Login from "./transaction";
+import Login from "../transaction";
 
 export default function Home() {
   console.log("indexjs pages 3000");
@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Head>
         {/* <Dashboard /> */}
-        <div>/auth/index</div>
+        <div>/auth/index : index tidak digunakan dahulu</div>
         <Login/>
       </Head>
       <main></main>

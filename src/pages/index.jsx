@@ -1,10 +1,10 @@
 import React from "react";
-import Login from "./auth/transaction";
+import Transaksi from "./transaction";
 
 export default function Home() {
   return (
     <>
-        <Login ayam={"ayam index.js"} />
+      <Transaksi ayam={"ayam index.js"} />
     </>
   );
 }

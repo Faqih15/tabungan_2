@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 export default function Navbar() {
+  const focusOnRender = useRef();
+  // console.log(focusOnRender, "focusOnRender");
+  useEffect(() => {
+    focusOnRender.current.focus();
+  }, []);
+
   return (
     <>
       {/* Navbar */}
@@ -23,14 +29,14 @@ export default function Navbar() {
               <input
                 type="text"
                 placeholder="Search here..."
+                ref={focusOnRender}
                 autoComplete="off"
                 className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
               />
             </div>
           </form>
           {/* User */}
-          <ul className="flex-col md:flex-row list-none items-center hidden md:flex">
-          </ul>
+          <ul className="flex-col md:flex-row list-none items-center hidden md:flex"></ul>
         </div>
       </nav>
       {/* End Navbar */}
