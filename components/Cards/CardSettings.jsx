@@ -46,10 +46,13 @@ export default function CardSettings({ props }) {
     nim: "",
     orangtua: "",
     kelas: "",
+    id_kelas: "",
     password: "",
   });
   const mendaftar = (e) => {
     setdatapertama({ ...datapertama, [e.target.name]: e.target.value });
+    // console.log([e.target.name], "param daftar 54");
+    console.log(datapertama, "datapertama");
   };
   const daftar = (e) => {
     e.preventDefault();
@@ -157,16 +160,19 @@ export default function CardSettings({ props }) {
                     KELAS
                   </label>
                   <Select
-                    onChange={(e) =>
-                      mendaftar({
-                        target: { value: e.value, name: "kelas" },
-                      })
+                    onChange={(e, index) =>
+                      mendaftar(
+                        {
+                          target: { value: e.id, name: "kelas" },
+                        },
+                        console.log(e, " param e onChange")
+                      )
                     }
                     blurInputOnSelect={false} //set by default, but to be sure
                     options={listKelas}
                     type="text"
-                    id="kelas"
-                    name="kelas"
+                    id="id_kelas"
+                    name="id_kelas"
                     styles={menuStyle}
                     className=" border-0 px-1 py-1 text-slate-900 bg-white rounded text-sm 
                     shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"

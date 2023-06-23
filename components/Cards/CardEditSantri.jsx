@@ -36,15 +36,13 @@ const menuStyle = {
 export default function CardEditSantri({ id }) {
   const [firstData, setFirstData] = useState("");
   const [listKelas, setlistKelas] = useState([]);
-
-  console.log(id, "id di card edit santri");
+  console.log(firstData, " di card edit santri");
 
   useEffect(() => {
     fetch("/api/data-kelas/get")
       .then((res) => res.json())
       .then((data) => setlistKelas(data));
   }, []);
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -57,10 +55,9 @@ export default function CardEditSantri({ id }) {
     }
     fetchData();
   }, [id]);
-  console.log(firstData, "firstData 52");
+
   const edit = (e) => {
     setFirstData({ ...firstData, [e.target.name]: e.target.value });
-    console.log(e.target.value, "e.target.value");
   };
   const saveEdit = (e, idx) => {
     e.preventDefault();
@@ -75,7 +72,6 @@ export default function CardEditSantri({ id }) {
         }),
         headers: firstData,
       });
-      console.log(datasave, "dua data dua");
       // response();
     };
     save().then(() => {
@@ -166,15 +162,15 @@ export default function CardEditSantri({ id }) {
                   <Select
                     onChange={(e) =>
                       edit({
-                        target: { value: e.value, name: "kelas" },
+                        target: { value: e.id, name: "kelas" },
                       })
                     }
                     blurInputOnSelect={false}
                     options={listKelas}
                     defaultValue={firstData.kelas}
                     type="text"
-                    id="kelas"
-                    name="kelas"
+                    id="id_kelas"
+                    name="id_kelas"
                     styles={menuStyle}
                     className=" border-0 px-1 py-1 text-slate-900 bg-white rounded text-sm 
                     shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"

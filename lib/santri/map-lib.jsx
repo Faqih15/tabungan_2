@@ -1,25 +1,24 @@
 import excuteQuery from "../db-library-index";
-
 export async function mapSantri() {
   try {
-    const results = await excuteQuery({
-      query: "SELECT * FROM santri_list",
+    const joinjoin = await excuteQuery({
+      query: `SELECT dk.value, sl.nim, sl.nama, sl.orangtua, sl.idcard, sl.id
+              FROM santri_list AS sl
+              JOIN daftar_kelas AS dk ON (dk.id = sl.id_kelas);`,
     });
-
-    const users = results.map((result) => {
+    const datajoin = joinjoin.map((result) => {
       return {
         id: result.id,
-        createdAt: result.createdAt,
         nama: result.nama,
         nim: result.nim,
         orangtua: result.orangtua,
-        kelas: result.id_kelas,
+        kelas: result.value,
+        idcard: result.idcard,
       };
     });
-
-    return users;
+    return datajoin;
   } catch (error) {
-    console.log(error);
+    console.log(error, "error try catch bang");
     return [];
   }
 }

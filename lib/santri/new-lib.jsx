@@ -22,7 +22,7 @@ export async function newSantri({ nama, nim, orangtua, kelas, password }) {
     console.log(user, "user");
     const result = await excuteQuery({
       query:
-        "INSERT INTO santri_list (createdAt, nama, nim, orangtua, hash, salt, kelas) VALUES( ?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO santri_list (createdAt, nama, nim, orangtua, hash, salt, id_kelas) VALUES( ?, ?, ?, ?, ?, ?, ?)",
       values: [
         user.createdAt.toString(),
         user.nama,

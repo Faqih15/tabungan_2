@@ -4,6 +4,8 @@ import Link from "next/link";
 import ConfirmAlert from "./CardAlertDelete";
 
 export default function CardTableAdmin({ color }) {
+  // dokumentasi props color untuk mode gelap tidak dihapus
+  // defaultProps, propTypes, mode light dark lihat di bagian paling bawah
   const [listAdmin, setlistAdmin] = useState([]);
   useEffect(() => {
     fetch("/api/admin/get-api")
