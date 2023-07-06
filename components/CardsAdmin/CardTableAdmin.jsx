@@ -3,16 +3,38 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import ConfirmAlert from "./CardAlertDelete";
 
+import supabase from "@lib/supabaseClient";
+
 export default function CardTableAdmin({ color }) {
   // dokumentasi props color untuk mode gelap tidak dihapus
   // defaultProps, propTypes, mode light dark lihat di bagian paling bawah
-  const [listAdmin, setlistAdmin] = useState([]);
+  const [listAdmin, setlistAdmin] = React.useState([]);
+  // useEffect(() => {
+  //   fetch("/api/admin/get-api")
+  //     .then((res) => res.json())
+  //     .then((data) => setlistAdmin(data));
+  // }, []);
+
   useEffect(() => {
-    fetch("/api/admin/get-api")
-      .then((res) => res.json())
-      .then((data) => setlistAdmin(data));
+    const fetchData = async () => {
+      const { data, error } = await supabase.from("admin").select("*");
+      if (error) {
+        console.error("Error fetching data:", error);
+      } else {
+        setlistAdmin(data);
+      }
+    };
+
+    fetchData();
   }, []);
 
+  // useEffect(() => {
+  //   async () => {
+  //     const data = await supabase.from("admin").select("*");
+  //     setlistAdmin(data);
+  //     console.log(data, "data useEffect");
+  //   };
+  // });
   const handleDelete = (id) => {
     setlistAdmin((prevList) => prevList.filter((item) => item.id !== id));
   };
@@ -149,11 +171,9 @@ export default function CardTableAdmin({ color }) {
     </>
   );
 }
-
 CardTableAdmin.defaultProps = {
   color: "light",
 };
-
 CardTableAdmin.propTypes = {
   color: PropTypes.oneOf(["light", "dark"]),
 };

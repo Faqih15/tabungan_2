@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import Admin from "layouts/layoutAdmin";
+import moment from "moment";
+import crypto from "crypto";
+
 function Administrator() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [data, setData] = useState([]);
 
   const addAdmin = (e) => {
     e.preventDefault();
@@ -25,15 +29,31 @@ function Administrator() {
     });
     e.target.reset();
   };
+  const newAdmin = async () => {
+    console.log("new admin submit");
+    const salt = crypto.randomBytes(16).toString("hex");
+    const hash = crypto
+      .pbkdf2Sync(password, salt, 1000, 64, "sha512")
+      .toString("hex");
+    const { data, error } = await supabase.from("admin").insert({
+      email: email,
+      salt: salt,
+      hash: hash,
+      created_at: moment().format("YYYY-MM-DD HH:mm:ss"),
+      updated_at: moment().format("YYYY-MM-DD HH:mm:ss"),
+    });
+    console.log(data, "data di bawah else");
 
-  function myFunction() {
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-      x.type = "text";
+    if (error) {
+      console.error("Error adding admin:", error);
     } else {
-      x.type = "password";
+      console.log("Admin added successfully");
+      // Optionally update the data state or perform any other actions
+      setData(data);
     }
-  }
+  };
+  console.log(data, "data di luar else");
+
   const backtoadmin = () => {
     window.location.href = "/admin/admin";
   };
@@ -46,7 +66,7 @@ function Administrator() {
               <h6 className="text-black text-sm mt-3 mb-6 font-bold uppercase">
                 Tambah Admin
               </h6>
-              <form onSubmit={addAdmin}>
+              <form onSubmit={newAdmin}>
                 <section>
                   <div className="w-full lg:w-10/12 px-4 justify-center">
                     <div className="relative w-full mb-3">
