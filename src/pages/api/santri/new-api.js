@@ -1,19 +1,27 @@
 import { newSantri } from "@lib/santri/new-lib";
+import { check } from "@lib/santri/check";
 
-export default function handler(req, res) {
-  console.log(req, res, "req res");
-  if (req.method === "POST") {
+export default async function handler(req, res) {
+  const body = JSON.parse(req.body);
+  console.log(body, "data body yg dikirim");
+  const nim = body.nim;
+  const cek = await check(nim);
+  const ceknim = cek[0] ? cek[0].nim : null;
+
+  if (ceknim) {
+    console.log("SUDAH ADA COY NOMER", nim);
+    res.status(200).json({ message: `santri dengan nim ${nim} sudah ada` });
+  } else {
+    console.log("CREATE PROFIL SANTRI BARU");
     const requestMethod = req.method;
     const body = JSON.parse(req.body);
-    console.log(body, "body 8");
     switch (requestMethod) {
-      case 'POST':
-        console.log(body, "body 11 body body")
-        newSantri(body)
-        res.status(200).json({ message: 'berhasil new santri'})
+      case "POST":
+        newSantri(body);
+        res.status(200).json({ message: "berhasil new santri" });
       // handle other HTTP methods
       default:
-        res.status(200).json({ message: 'Create user API'})
+        res.status(200).json({ message: "Create user API" });
     }
   }
 }

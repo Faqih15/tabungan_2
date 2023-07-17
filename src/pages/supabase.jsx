@@ -37,7 +37,7 @@ export default function Index() {
         className="px-3 py-1 rounded bg-neutral-200 hover:bg-neutral-300"
         onClick={async () => {
           const { data, error } = await supabase.from("admin").insert({
-            email: "satu@gmail.com",
+            email: "dua@gmail.com",
             hash: "hhhh",
             salt: "ssss",
             created_at: "2023-07-05T07:53:32.599948+00:00",
@@ -47,6 +47,17 @@ export default function Index() {
       >
         add admin
       </button>
+
+
+
+
+
+
+
+
+
+
+      
       <button
         className="px-3 py-1 rounded bg-neutral-200 hover:bg-neutral-300"
         onClick={async () => {

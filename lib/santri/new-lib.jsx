@@ -3,7 +3,14 @@ import crypto from "crypto";
 import excuteQuery from "../db-library-index";
 import moment from "moment";
 
-export async function newSantri({ nama, nim, orangtua, kelas, password }) {
+export async function newSantri({
+  nama,
+  nim,
+  orangtua,
+  id_kelas,
+  password,
+  id_card,
+}) {
   console.log("lib/user.jsx");
   const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto
@@ -16,13 +23,14 @@ export async function newSantri({ nama, nim, orangtua, kelas, password }) {
     orangtua,
     hash,
     salt,
-    kelas,
+    id_kelas,
+    id_card,
   };
   try {
     console.log(user, "user");
     const result = await excuteQuery({
       query:
-        "INSERT INTO santri_list (createdAt, nama, nim, orangtua, hash, salt, id_kelas) VALUES( ?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO santri_list (createdAt, nama, nim, orangtua, hash, salt, id_kelas, idcard) VALUES( ?, ?, ?, ?, ?, ?, ?, ?)",
       values: [
         user.createdAt.toString(),
         user.nama,
@@ -30,7 +38,8 @@ export async function newSantri({ nama, nim, orangtua, kelas, password }) {
         user.orangtua,
         user.hash,
         user.salt,
-        user.kelas,
+        user.id_kelas,
+        user.id_card,
       ],
     });
     console.log(result);

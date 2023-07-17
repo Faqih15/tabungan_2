@@ -4,7 +4,6 @@ import Link from "next/link";
 import ConfirmAlert from "./CardAlertDelete";
 export default function CardTable() {
   const [listSantri, setlistSantri] = useState([]);
-  const [dataayam, setdataayam] = useState([]);
   useEffect(() => {
     fetch("/api/santri/map-api")
       .then((res) => res.json())
@@ -13,6 +12,43 @@ export default function CardTable() {
   const handleDelete = (id) => {
     setlistSantri((prevList) => prevList.filter((item) => item.id !== id));
   };
+  // const [data, setData] = useState(initialData);
+  const [sortOrder, setSortOrder] = useState("ascending");
+
+  const sortbykelas = () => {
+    const sortedData = [...listSantri].sort((a, b) => {
+      if (sortOrder === "ascending") {
+        return a.kelas.localeCompare(b.kelas);
+      } else {
+        return b.kelas.localeCompare(a.kelas);
+      }
+    });
+    setlistSantri(sortedData);
+    setSortOrder(sortOrder === "ascending" ? "descending" : "ascending");
+  };
+  const sortbyname = () => {
+    const sortedData = [...listSantri].sort((a, b) => {
+      if (sortOrder === "ascending") {
+        return a.nama.localeCompare(b.nama);
+      } else {
+        return b.nama.localeCompare(a.nama);
+      }
+    });
+    setlistSantri(sortedData);
+    setSortOrder(sortOrder === "ascending" ? "descending" : "ascending");
+  };
+  const sortbynim = () => {
+    const sortedData = [...listSantri].sort((a, b) => {
+      if (sortOrder === "ascending") {
+        return a.nim - b.nim;
+      } else {
+        return b.nim - a.nim;
+      }
+    });
+    setlistSantri(sortedData);
+    setSortOrder(sortOrder === "ascending" ? "descending" : "ascending");
+  };
+
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded">
@@ -43,16 +79,25 @@ export default function CardTable() {
                 <th className="px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
                   ID Card
                 </th>
-                <th className="px-7 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                <th
+                  onClick={sortbyname}
+                  className="px-7 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                >
                   Nama
                 </th>
-                <th className="px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                <th
+                  onClick={sortbynim}
+                  className="px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                >
                   Nim
                 </th>
                 <th className="px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left  bg-blueGray-50 text-blueGray-500 border-blueGray-100">
                   Ortu
                 </th>
-                <th className="px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                <th
+                  onClick={sortbykelas}
+                  className="px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                >
                   Kelas
                 </th>
                 <th className="px-7 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-center bg-blueGray-50 text-blueGray-500 border-blueGray-100">

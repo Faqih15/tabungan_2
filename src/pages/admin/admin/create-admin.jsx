@@ -29,30 +29,36 @@ function Administrator() {
     });
     e.target.reset();
   };
-  const newAdmin = async () => {
-    console.log("new admin submit");
-    const salt = crypto.randomBytes(16).toString("hex");
-    const hash = crypto
-      .pbkdf2Sync(password, salt, 1000, 64, "sha512")
-      .toString("hex");
-    const { data, error } = await supabase.from("admin").insert({
-      email: email,
-      salt: salt,
-      hash: hash,
-      created_at: moment().format("YYYY-MM-DD HH:mm:ss"),
-      updated_at: moment().format("YYYY-MM-DD HH:mm:ss"),
-    });
-    console.log(data, "data di bawah else");
+  const newadmin = () => {
+    console.log("data", data);
+    console.log("email password", email, password);
+    const fetchData = async () => {
+      console.log("new admin submit");
+      const salt = crypto.randomBytes(16).toString("hex");
+      const hash = crypto
+        .pbkdf2Sync(password, salt, 1000, 64, "sha512")
+        .toString("hex");
+      const { data, error } = await supabase.from("admin").insert({
+        email: email,
+        salt: salt,
+        hash: hash,
+        created_at: moment().format("YYYY-MM-DD HH:mm:ss"),
+        updated_at: moment().format("YYYY-MM-DD HH:mm:ss"),
+      });
+      console.log(data, "data di bawah else");
 
-    if (error) {
-      console.error("Error adding admin:", error);
-    } else {
-      console.log("Admin added successfully");
-      // Optionally update the data state or perform any other actions
-      setData(data);
-    }
+      // if (error) {
+      //   console.error("Error adding admin:", error);
+      // } else {
+      //   console.log("Admin added successfully");
+      //   // Optionally update the data state or perform any other actions
+      //   setData(data);
+      // }
+    };
+    fetchData();
   };
-  console.log(data, "data di luar else");
+
+  console.log(data, email, password, "data di luar else");
 
   const backtoadmin = () => {
     window.location.href = "/admin/admin";
@@ -66,7 +72,7 @@ function Administrator() {
               <h6 className="text-black text-sm mt-3 mb-6 font-bold uppercase">
                 Tambah Admin
               </h6>
-              <form onSubmit={newAdmin}>
+              <form onSubmit={newadmin}>
                 <section>
                   <div className="w-full lg:w-10/12 px-4 justify-center">
                     <div className="relative w-full mb-3">
@@ -111,7 +117,7 @@ function Administrator() {
                   </div>
                 </section>
                 <button
-                  type="submit"
+                  // type="submit"
                   className="bg-pink-600 text-white font-bold mt-5 py-2 px-4 rounded opacity-75"
                   onClick={backtoadmin}
                 >

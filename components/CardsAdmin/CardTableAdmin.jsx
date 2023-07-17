@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import ConfirmAlert from "./CardAlertDelete";
@@ -9,24 +9,24 @@ export default function CardTableAdmin({ color }) {
   // dokumentasi props color untuk mode gelap tidak dihapus
   // defaultProps, propTypes, mode light dark lihat di bagian paling bawah
   const [listAdmin, setlistAdmin] = React.useState([]);
-  // useEffect(() => {
-  //   fetch("/api/admin/get-api")
-  //     .then((res) => res.json())
-  //     .then((data) => setlistAdmin(data));
-  // }, []);
-
   useEffect(() => {
-    const fetchData = async () => {
-      const { data, error } = await supabase.from("admin").select("*");
-      if (error) {
-        console.error("Error fetching data:", error);
-      } else {
-        setlistAdmin(data);
-      }
-    };
-
-    fetchData();
+    fetch("/api/admin/get-api")
+      .then((res) => res.json())
+      .then((data) => setlistAdmin(data));
   }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const { data, error } = await supabase.from("admin").select("*");
+  //     if (error) {
+  //       console.error("Error fetching data:", error);
+  //     } else {
+  //       setlistAdmin(data);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+  // console.log(listAdmin, "list admin 29");
 
   // useEffect(() => {
   //   async () => {
@@ -65,6 +65,20 @@ export default function CardTableAdmin({ color }) {
               >
                 <span>Add New Admin</span>
               </Link>
+              <button
+                onClick={async () => {
+                  const { data, error } = await supabase.from("admin").insert({
+                    email: "ketigaketiga@gmail.com",
+                    hash: "hhhh",
+                    salt: "ssss",
+                    created_at: "2023-07-05T07:53:32.599948+00:00",
+                    updated_at: "2023-07-05T07:53:32.599948+00:00",
+                  });
+                }}
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
+              >
+                Try Button
+              </button>
             </div>
           </div>
         </div>

@@ -45,7 +45,7 @@ export default function ConfirmAlert({ santri, id, handleDelete }) {
           <div className="bg-white rounded-lg p-6">
             <h2 className="text-lg font-bold mb-4">Confirmation</h2>
             <p className="mb-4">
-              Are you sure you want to delete {santri.nama}
+              Are you sure you want to delete <b>{santri.nama}</b>
             </p>
             <div className="flex justify-end">
               <button

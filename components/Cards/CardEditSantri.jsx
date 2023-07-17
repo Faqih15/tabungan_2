@@ -43,6 +43,7 @@ export default function CardEditSantri({ id }) {
       .then((res) => res.json())
       .then((data) => setlistKelas(data));
   }, []);
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -123,8 +124,6 @@ export default function CardEditSantri({ id }) {
                     type="number"
                     defaultValue={firstData.nim}
                     name="nim"
-                    min="30001"
-                    max="39099"
                     className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     autoComplete="off"
                     required
@@ -167,7 +166,6 @@ export default function CardEditSantri({ id }) {
                     }
                     blurInputOnSelect={false}
                     options={listKelas}
-                    defaultValue={firstData.kelas}
                     type="text"
                     id="id_kelas"
                     name="id_kelas"
@@ -175,6 +173,7 @@ export default function CardEditSantri({ id }) {
                     className=" border-0 px-1 py-1 text-slate-900 bg-white rounded text-sm 
                     shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Edit Kelas Santri"
+                    required
                   />
                 </div>
               </div>
@@ -202,3 +201,7 @@ export async function getServerSideProps() {
   // Pass data to the page via props
   return { props: { data } };
 }
+
+// defaultValue={listKelas.find(
+//   (e) => e.value === firstData.id_kelas
+// )}

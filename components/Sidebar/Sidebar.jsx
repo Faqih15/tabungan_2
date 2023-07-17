@@ -142,6 +142,33 @@ export default function Sidebar() {
                   <i className={"fas fa-table mr-2 text-sm "}></i> Data Kelas
                 </Link>
               </li>
+              <li className="items-center hover:bg-gray-200">
+                <Link
+                  href="/admin/supabase"
+                  className={"text-xs uppercase py-3 font-bold block "}
+                >
+                  <i className={"fas fa-table mr-2 text-sm "}></i> Supabase
+                  Santri
+                </Link>
+              </li>
+              <li className="items-center hover:bg-gray-200">
+                <Link
+                  href="/admin/supabase"
+                  className={"text-xs uppercase py-3 font-bold block "}
+                >
+                  <i className={"fas fa-table mr-2 text-sm "}></i> Supabase
+                  Admin
+                </Link>
+              </li>
+              <li className="items-center hover:bg-gray-200">
+                <Link
+                  href="/admin/supabase"
+                  className={"text-xs uppercase py-3 font-bold block "}
+                >
+                  <i className={"fas fa-table mr-2 text-sm "}></i> Supabase
+                  Kelas
+                </Link>
+              </li>
             </ul>
 
             {/* Divider */}

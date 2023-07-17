@@ -45,13 +45,12 @@ export default function CardSettings({ props }) {
     nama: "",
     nim: "",
     orangtua: "",
-    kelas: "",
     id_kelas: "",
     password: "",
+    id_card: "",
   });
   const mendaftar = (e) => {
     setdatapertama({ ...datapertama, [e.target.name]: e.target.value });
-    // console.log([e.target.name], "param daftar 54");
     console.log(datapertama, "datapertama");
   };
   const daftar = (e) => {
@@ -61,8 +60,9 @@ export default function CardSettings({ props }) {
         nama: datapertama.nama,
         nim: datapertama.nim,
         orangtua: datapertama.orangtua,
-        kelas: datapertama.kelas,
+        id_kelas: datapertama.id_kelas,
         password: datapertama.password,
+        id_card: datapertama.id_card,
       };
       const response = await fetch("/api/santri/new-api", {
         method: "POST",
@@ -73,6 +73,7 @@ export default function CardSettings({ props }) {
     };
     newsantri().then((data) => {
       console.log(data, "data.message");
+      alert(data.message);
     });
     e.target.reset();
   };
@@ -108,6 +109,25 @@ export default function CardSettings({ props }) {
                     placeholder="Masukkan Nama Santri"
                     autoComplete="off"
                     required
+                  />
+                </div>
+              </div>
+              <div className="w-full lg:w-6/12 px-4">
+                <div className="relative w-full mb-3">
+                  <label
+                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    htmlFor="grid-password"
+                  >
+                    ID CARD
+                  </label>
+                  <input
+                    onChange={mendaftar}
+                    type="number"
+                    id="id_card"
+                    name="id_card"
+                    className="border-0 px-3 py-3 placeholder-gray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Masukkan ID-CARD Santri"
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -163,7 +183,7 @@ export default function CardSettings({ props }) {
                     onChange={(e, index) =>
                       mendaftar(
                         {
-                          target: { value: e.id, name: "kelas" },
+                          target: { value: e.id, name: "id_kelas" },
                         },
                         console.log(e, " param e onChange")
                       )
@@ -203,7 +223,7 @@ export default function CardSettings({ props }) {
             </div>
             <button
               type="submit"
-              className=" bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75"
+              className="bg-pink-600 text-white font-bold py-2 px-4 rounded opacity-75"
               onClick={backtosantri}
             >
               DAFTARKAN MURID
