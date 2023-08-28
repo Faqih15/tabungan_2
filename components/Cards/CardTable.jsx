@@ -85,7 +85,7 @@ export default function CardTable() {
                 >
                   Nama
                 </th>
-                <th
+                {/* <th
                   onClick={sortbynim}
                   className="px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                 >
@@ -99,6 +99,9 @@ export default function CardTable() {
                   className="px-3 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                 >
                   Kelas
+                </th> */}
+                <th className="px-7 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-center bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+                  Saldo
                 </th>
                 <th className="px-7 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-bold text-center bg-blueGray-50 text-blueGray-500 border-blueGray-100">
                   Action
@@ -121,7 +124,7 @@ export default function CardTable() {
                     <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-left">
                       <span className="ml-3">{santri.nama}</span>
                     </th>
-                    <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
+                    {/* <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       {santri.nim}
                     </td>
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
@@ -133,6 +136,24 @@ export default function CardTable() {
                       <div className="flex items-center">
                         <span className="mr-2">{santri.kelas}</span>
                       </div>
+                    </td> */}
+                    <td className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
+                      <tr>
+                        <td className="flex items-center px-3">
+                          <span className="w-4	">Rp.</span>
+                          <span className="w-14	text-right">{santri.saldo}</span>
+                        </td>
+                        <td>
+                          <Link
+                            href={{
+                              pathname: `/admin/santri/edit/${santri.id}`,
+                            }}
+                            className="bg-transparent hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
+                          >
+                            <span>💰</span>
+                          </Link>
+                        </td>
+                      </tr>
                     </td>
                     <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap">
                       <tr>

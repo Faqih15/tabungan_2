@@ -1,15 +1,9 @@
 import crypto from "crypto";
-// import { v4 as uuidv4 } from "uuid";
 import excuteQuery from "../db-library-index";
 import moment from "moment";
 
 export async function newSantri({
-  nama,
-  nim,
-  orangtua,
-  id_kelas,
-  password,
-  id_card,
+  nama, nim, orangtua, id_kelas, password, id_card,
 }) {
   console.log("lib/user.jsx");
   const salt = crypto.randomBytes(16).toString("hex");
@@ -18,14 +12,7 @@ export async function newSantri({
     .toString("hex");
   const user = {
     createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
-    nama,
-    nim,
-    orangtua,
-    hash,
-    salt,
-    id_kelas,
-    id_card,
-  };
+    nama, nim, orangtua, hash, salt, id_kelas, id_card,};
   try {
     console.log(user, "user");
     const result = await excuteQuery({

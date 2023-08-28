@@ -114,7 +114,7 @@ export default function TabelKelas({ color }) {
                     <th className="border-t-0 px-3 align-middle border-l-0 border-r-0 whitespace-nowrap text-left">
                       <Link
                         href={{
-                          pathname: `/admin/datakelas/santri/${kelas.value}`,
+                          // pathname: `/admin/datakelas/santri/${kelas.value}`,
                         }}
                       >
                         <span

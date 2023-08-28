@@ -144,29 +144,10 @@ export default function Sidebar() {
               </li>
               <li className="items-center hover:bg-gray-200">
                 <Link
-                  href="/admin/supabase"
+                  href="/admin/debit"
                   className={"text-xs uppercase py-3 font-bold block "}
                 >
-                  <i className={"fas fa-table mr-2 text-sm "}></i> Supabase
-                  Santri
-                </Link>
-              </li>
-              <li className="items-center hover:bg-gray-200">
-                <Link
-                  href="/admin/supabase"
-                  className={"text-xs uppercase py-3 font-bold block "}
-                >
-                  <i className={"fas fa-table mr-2 text-sm "}></i> Supabase
-                  Admin
-                </Link>
-              </li>
-              <li className="items-center hover:bg-gray-200">
-                <Link
-                  href="/admin/supabase"
-                  className={"text-xs uppercase py-3 font-bold block "}
-                >
-                  <i className={"fas fa-table mr-2 text-sm "}></i> Supabase
-                  Kelas
+                  <i className={"fas fa-table mr-2 text-sm "}></i> hlm add debit
                 </Link>
               </li>
             </ul>
